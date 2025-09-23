@@ -1,0 +1,162 @@
+@import "tailwindcss";
+
+/*
+  Gilroy font setup
+  - Files are expected in `public/font/` (you already added them).
+  - We declare a few weights and expose a CSS variable `--font-gilroy` for easy reuse.
+  - font-display: swap is used so text stays visible while fonts load.
+*/
+
+@font-face {
+  font-family: 'Gilroy';
+  src: url('/font/Gilroy-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Gilroy';
+  src: url('/font/Gilroy-Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Gilroy';
+  src: url('/font/Gilroy-SemiBold.woff') format('woff');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Gilroy';
+  src: url('/font/Gilroy-ExtraBold.woff') format('woff');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --gray: #525252;
+  --primary: #4A5D52;
+  --black: #060608;
+  --black-heading: #41444B;
+  --shadow-sm:0px 4px 16px rgba(0, 0, 0, 0.08);
+  /* primary font variable for easy reference in components/layouts */
+  --font-gilroy: 'Gilroy', Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+/* removed deprecated @theme block for compatibility */
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  /* Use the --font-gilroy variable so components can override easily */
+  font-family: var(--font-gilroy);
+}
+
+/* Remove browser default focus outlines for form controls (user request).
+   NOTE: This has accessibility impact; consider replacing with custom visible focus for keyboard users later. */
+input:focus, select:focus, textarea:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.text-gray-400{color: var(--gray);}
+.text-primary{color: var(--primary);}
+.text-black{color: var(--black);}
+.text-black-heading{color: var(--black-heading);}
+/* Small UI helper classes used by dashboard pages */
+.card-surface {
+  /* background: #fff; */
+  border-radius: 12px;
+  /* padding: 20px; */
+  /* box-shadow: 0 6px 18px rgba(16,24,40,0.04); */
+}
+.pill-tab {
+  border-radius: 9999px;
+  padding: 12px 18px;
+  font-size: 16px;
+  cursor: pointer;
+}
+@media (max-width:640px){
+  .pill-tab { padding: 8px 12px; font-size: 14px; }
+}
+.search-pill {
+  border-radius: 9999px;
+  padding: 8px 20px;
+  color:#525252;
+  background: #fff;
+  border: 1px solid #E5E5E5;
+}
+.search-pill svg {font-size: 22px;}
+.search-pill input{height:30px;}
+.search-pill input:focus{border: none;outline: none;}
+.booking-table-wrap{background-color: #FFFFFF;padding: 29px !important;border-radius: 20px;}
+.booking-table-wrap thead tr, .table-column-wrap thead tr{background-color: #F6F6F6;border-radius: 10px 10px 0px 0px;}
+.search-pill input::placeholder {font-size: 16px;}
+.booking-table th, .booking-table td, .table-column-wrap th, .table-column-wrap td {padding: 18px 12px;vertical-align: middle;font-weight:400;}
+.booking-table td, .table-column-wrap td{font-weight:600;}
+.booking-table tr, .table-column-wrap tr { border-bottom: 1px solid #F0F2F1; }
+.price-card {background: #fff;border-radius: 12px;padding: 20px;box-shadow: 0 6px 18px rgba(16,24,40,0.04);}
+.status-badge { background:#FFF6E6; color:#C36B00; padding:6px 10px; border-radius:8px; font-size:13px; }
+.btn-primary-pill { background: var(--primary); color: #fff; padding:12px 20px; border-radius:100px; cursor: pointer; display:inline-block; font-weight:600; }
+
+/* Auth / form polish used by auth pages (login / forgot-password / reset-password) */
+.auth-header { padding:18px 24px; background: #fff; border-bottom:1px solid rgba(0,0,0,0.04); }
+.auth-header .brand { font-weight:700; font-size:20px; }
+.auth-header .right-cta { padding:8px 14px; border-radius:9999px; border:1px solid rgba(0,0,0,0.06); font-size:13px; }
+
+.auth-center { display:flex; align-items:center; justify-content:center; padding:48px 16px; }
+.auth-wrapper { width:100%; max-width:720px; }
+
+.auth-title { font-size:34px; font-weight:800; margin:0 0 8px 0; text-align:center; }
+.auth-sub { font-size:14px; color:#6b7280; margin:0 0 22px 0; text-align:center; }
+
+.input-pill-wrap { position:relative; }
+.input-pill { width:100%; padding:14px 18px; padding-left:52px; border-radius:9999px; border:1px solid #EFF2F1; background:#fff; box-shadow:0 8px 18px rgba(16,24,40,0.03); font-size:14px; }
+.input-icon { position:absolute; left:16px; top:50%; transform:translateY(-50%); width:20px; height:20px; opacity:0.9; }
+
+.btn-full { width:100%; display:inline-block; padding:12px 18px; border-radius:9999px; background:var(--primary); color:#fff; border:none; font-weight:600; box-shadow:0 6px 18px rgba(74,93,82,0.12); }
+.slick-slide > div {
+  height: 100%;
+}
+
+/* Responsive helpers for right-side content */
+.img-fluid { width: 100%; height: auto; display: block; }
+.table-responsive { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.content-pad-sm { padding-left: 12px; padding-right: 12px; }
+
+@media (max-width:640px){
+  .auth-title { font-size:26px; }
+  .auth-center { padding:28px 12px; }
+  /* reduce main paddings on small devices */
+  main { padding-left: 12px !important; padding-right: 12px !important; }
+}
+
+.card-surface > .text-center.text-sm,
+.card-surface > .footer-bottom-line,
+.card-surface .back-to-login {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 48px; 
+  z-index: 40;
+  width: -webkit-fill-available;
+  background: transparent;
+}
+
+@media (max-width:640px) {
+  .card-surface > .text-center.text-sm,
+  .card-surface > .footer-bottom-line,
+  .card-surface .back-to-login { bottom: 20px; font-size: 13px; }
+}
