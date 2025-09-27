@@ -1,23 +1,12 @@
 "use client";
 
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import MultiImageUploader from '@/components/MultiImageUploader';
 
-const SAMPLE_TAGS = ['music','food','family','outdoor','free','paid'];
-
 export default function NewEventPage() {
-  const [images, setImages] = useState<File[]>([]);
-
-  const [tagOpen, setTagOpen] = useState(false);
-  const [selectedTags, setSelectedTags] = useState<string[]>([]);
-  const tagRef = useRef<HTMLDivElement | null>(null);
-
+  const [, setImages] = useState<File[]>([]);
   // image previews handled by MultiImageUploader
-
-  function toggleTag(tag: string) {
-    setSelectedTags((s) => (s.includes(tag) ? s.filter((t) => t !== tag) : [...s, tag]));
-  }
 
   return (
     <div className="min-h-screen p-0 ">
@@ -62,7 +51,7 @@ export default function NewEventPage() {
               <input className="w-full bg-white border border-[#E5E7EB] rounded-full px-4 py-3 text-[var(--gray)]" placeholder="Add Location" />
             </div>
 
-            <div ref={tagRef} className="relative">
+            <div className="relative">
               <div className="rounded-xl border border-[#EDEDED] bg-white p-6 text-center shadow-sm">
                 <div className="text-lg text-[var(--gray)] mb-1 font-semibold">Upload Event Images</div>
                 <div className="text-md text-[var(--gray)] mb-6">Add up to 5 images to showcase the events to travelers.</div>

@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import Link from 'next/link';
+import Image from 'next/image';
 
 function AuthHeader({ rightLabel, rightHref }: { rightLabel?: string; rightHref?: string }){
   return (
@@ -41,7 +42,7 @@ export default function ResetPassword(){
           <p className="text-md mb-8 text-gray-400">Enter a strong password to secure your account.</p>
 
           <div className="mb-2 relative">
-            <img src="/images/password-icon.svg" alt="lock" className="w-5 h-5 absolute left-4 top-1/2 transform -translate-y-1/2 opacity-80" />
+            <Image src="/images/password-icon.svg" alt="lock" width={20} height={20} className="w-5 h-5 absolute left-4 top-1/2 transform -translate-y-1/2 opacity-80" />
             <input
               id="password"
               name="password"
@@ -54,7 +55,7 @@ export default function ResetPassword(){
               aria-label="New Password"
               aria-invalid={formik.touched.password && !!formik.errors.password}
             />
-            <img
+            <Image
               src="/images/eye-fill.svg"
               alt={showPassword ? 'hide password' : 'show password'}
               onClick={()=>setShowPassword(s=>!s)}
@@ -62,12 +63,14 @@ export default function ResetPassword(){
               tabIndex={0}
               onKeyDown={(e)=>{ if(e.key === 'Enter' || e.key === ' ') setShowPassword(s=>!s)}}
               className="w-5 h-5 absolute right-4 top-1/2 transform -translate-y-1/2 opacity-80 cursor-pointer"
+              width={20}
+              height={20}
             />
             {formik.touched.password && formik.errors.password ? <div className="text-xs text-red-600 absolute -bottom-5 left-2">{formik.errors.password}</div> : null}
           </div>
 
           <div className="mt-6 mb-2 relative">
-            <img src="/images/password-icon.svg" alt="lock" className="w-5 h-5 absolute left-4 top-1/2 transform -translate-y-1/2 opacity-80" />
+            <Image src="/images/password-icon.svg" alt="lock" width={20} height={20} className="w-5 h-5 absolute left-4 top-1/2 transform -translate-y-1/2 opacity-80" />
             <input
               id="confirm"
               name="confirm"
@@ -80,7 +83,7 @@ export default function ResetPassword(){
               aria-label="Confirm Password"
               aria-invalid={formik.touched.confirm && !!formik.errors.confirm}
             />
-            <img
+            <Image
               src="/images/eye-fill.svg"
               alt={showConfirm ? 'hide password' : 'show password'}
               onClick={()=>setShowConfirm(s=>!s)}
@@ -88,6 +91,8 @@ export default function ResetPassword(){
               tabIndex={0}
               onKeyDown={(e)=>{ if(e.key === 'Enter' || e.key === ' ') setShowConfirm(s=>!s)}}
               className="w-5 h-5 absolute right-4 top-1/2 transform -translate-y-1/2 opacity-80 cursor-pointer"
+              width={20}
+              height={20}
             />
             {formik.touched.confirm && formik.errors.confirm ? <div className="text-xs text-red-600 absolute -bottom-5 left-2">{formik.errors.confirm}</div> : null}
           </div>

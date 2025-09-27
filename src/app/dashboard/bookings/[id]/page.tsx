@@ -1,15 +1,14 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Link from 'next/link';
 import { useSearchParams } from "next/navigation";
+import Image from 'next/image';
 
 type Props = { params: { id: string } };
 
 export default function BookingDetail({ params }: Props) {
   const { id } = params;
-  const search = useSearchParams();
-  const cancelQuery = search?.get("cancel") === "true"; // reserved for future use
-  const [showCancel] = useState<boolean>(!!cancelQuery);
+  useSearchParams();
 
   return (
     <div className="p-0">
@@ -18,7 +17,7 @@ export default function BookingDetail({ params }: Props) {
         {/* Left card */}
         <div className="md:col-span-2 bg-white rounded-xl shadow-sm border border-[#E5E7EB] px-5 sm:px-8 py-6 space-y-6">
           <div className="flex items-center gap-4 pb-4 border-b border-gray-200">
-            <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=160&q=60" alt="hotel" className="w-14 h-14 rounded-md object-cover" />
+            <Image src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=160&q=60" alt="hotel" width={56} height={56} className="w-14 h-14 rounded-md object-cover" />
             <div className="flex-1 min-w-0">
               <div className="flex items-center justify-between gap-4">
                 <div className="min-w-0">

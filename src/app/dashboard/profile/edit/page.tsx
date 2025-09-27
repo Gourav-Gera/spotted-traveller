@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useRef, useCallback } from 'react';
+import Image from 'next/image';
 import { useAuth } from '../../../../hooks/useAuth';
 
 export default function EditProfilePage(){
@@ -38,7 +39,7 @@ export default function EditProfilePage(){
           <div className="relative">
             <div className="w-28 h-28 rounded-full bg-gray-100 overflow-hidden flex items-center justify-center ring-2 ring-offset-2 ring-[var(--primary)]/10">
               {avatar ? (
-                <img src={avatar} alt="Avatar preview" className="w-full h-full object-cover" />
+                <Image src={avatar} alt="Avatar preview" width={112} height={112} className="w-full h-full object-cover" />
               ) : (
                 <span className="text-xs text-gray-400">No Image</span>
               )}

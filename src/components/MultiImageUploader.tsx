@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
+import Image from 'next/image';
 
 export type MultiImageUploaderProps = {
   max?: number;
@@ -52,7 +53,7 @@ export default function MultiImageUploader({ max = 5, onChange, buttonLabel = "+
         <div className="mt-4 flex items-center gap-3 flex-wrap">
           {urls.map((src, i) => (
             <div key={i} className="relative w-20 h-24">
-              <img src={src} alt={`preview-${i}`} className="w-20 h-24 object-cover rounded-md border" />
+              <Image src={src} alt={`preview-${i}`} width={80} height={96} unoptimized className="w-20 h-24 object-cover rounded-md border" />
               <button aria-label="Remove image" onClick={() => removeAt(i)} className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-black/70 text-white text-xs flex items-center justify-center">×</button>
             </div>
           ))}

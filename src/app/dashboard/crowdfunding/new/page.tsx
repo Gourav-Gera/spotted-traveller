@@ -5,7 +5,7 @@ import Link from 'next/link';
 import MultiImageUploader from '@/components/MultiImageUploader';
 
 export default function NewCampaignPage(){ 
-  const [images, setImages] = useState<File[]>([]);
+  const [, setImages] = useState<File[]>([]);
 
   return (
     <div className="min-h-screen p-0">
@@ -63,7 +63,7 @@ export default function NewCampaignPage(){
         </div>
         <label className="flex items-start gap-2 text-[10px] leading-relaxed text-[var(--gray)]">
           <input type="checkbox" className="mt-1" defaultChecked />
-          <span>I hereby confirm that all information provided in this crowdfunding campaign is true, complete, and submitted in good faith. I understand that the campaign must comply with municipal regulations and community standards. By submitting this form, I agree to the platform's Privacy Policy and accept responsibility for the content and purpose of this campaign.</span>
+          <span>I hereby confirm that all information provided in this crowdfunding campaign is true, complete, and submitted in good faith. I understand that the campaign must comply with municipal regulations and community standards. By submitting this form, I agree to the platform&apos;s Privacy Policy and accept responsibility for the content and purpose of this campaign.</span>
         </label>
         <button className="w-full bg-[var(--primary)] text-white rounded-full py-4 text-sm font-medium cursor-pointer shadow-sm">Submit</button>
       </div>

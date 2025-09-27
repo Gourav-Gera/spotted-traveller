@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useAuth } from '../../../hooks/useAuth';
 
 function AuthHeader({ rightLabel, rightHref }: { rightLabel?: string; rightHref?: string }){
@@ -45,7 +46,7 @@ export default function Signup(){
           <p className="text-sm mb-6 text-gray-400">Enter your details to create your account.</p>
 
           <div className="mb-2 relative">
-            <img src="/images/password-icon.svg" alt="user" className="w-5 h-5 absolute left-4 top-1/2 transform -translate-y-1/2 opacity-80" />
+            <Image src="/images/password-icon.svg" alt="user" width={20} height={20} className="w-5 h-5 absolute left-4 top-1/2 transform -translate-y-1/2 opacity-80" />
             <input
               id="name"
               name="name"
@@ -60,7 +61,7 @@ export default function Signup(){
           {formik.touched.name && formik.errors.name ? <div className="text-xs text-red-600 mb-2 text-left pl-2">{formik.errors.name}</div> : <div className="h-0 mb-2" />}
 
           <div className="mb-2 relative">
-            <img src="/images/mail-icon.svg" alt="mail" className="w-5 h-5 absolute left-4 top-1/2 transform -translate-y-1/2 opacity-80" />
+            <Image src="/images/mail-icon.svg" alt="mail" width={20} height={20} className="w-5 h-5 absolute left-4 top-1/2 transform -translate-y-1/2 opacity-80" />
             <input
               id="email"
               name="email"
@@ -76,7 +77,7 @@ export default function Signup(){
 
           <div className="mb-4 relative">
             {/* left calendar placeholder icon (inline SVG) */}
-            <img src="/images/birth-icon.svg" alt="mail" className="w-5 h-5 absolute left-4 top-1/2 transform -translate-y-1/2 opacity-80" />
+            <Image src="/images/birth-icon.svg" alt="birth" width={20} height={20} className="w-5 h-5 absolute left-4 top-1/2 transform -translate-y-1/2 opacity-80" />
             <input
               id="dob"
               name="dob"
@@ -93,7 +94,7 @@ export default function Signup(){
           </div>
 
           <div className="mb-2 relative">
-            <img src="/images/password-icon.svg" alt="lock" className="w-5 h-5 absolute left-4 top-1/2 transform -translate-y-1/2 opacity-80" />
+            <Image src="/images/password-icon.svg" alt="lock" width={20} height={20} className="w-5 h-5 absolute left-4 top-1/2 transform -translate-y-1/2 opacity-80" />
             <input
               id="password"
               name="password"
@@ -106,7 +107,7 @@ export default function Signup(){
               aria-label="Password"
               aria-invalid={formik.touched.password && !!formik.errors.password}
             />
-            <img
+            <Image
               src="/images/eye-fill.svg"
               alt={showPassword ? 'hide password' : 'show password'}
               onClick={()=>setShowPassword(s=>!s)}
@@ -114,6 +115,8 @@ export default function Signup(){
               tabIndex={0}
               onKeyDown={(e)=>{ if(e.key === 'Enter' || e.key === ' ') setShowPassword(s=>!s)}}
               className="w-5 h-5 absolute right-4 top-1/2 transform -translate-y-1/2 opacity-80 cursor-pointer"
+              width={20}
+              height={20}
             />
           </div>
           {formik.touched.password && formik.errors.password ? <div className="text-xs text-red-600 mb-4 text-left pl-2">{formik.errors.password}</div> : <div className="h-0 mb-4" />}

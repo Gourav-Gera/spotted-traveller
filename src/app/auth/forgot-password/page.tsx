@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import Link from 'next/link';
+import Image from 'next/image';
 
 function AuthHeader({ rightLabel, rightHref }: { rightLabel?: string; rightHref?: string }){
   return (
@@ -35,11 +36,11 @@ export default function ForgotPasswordPage(){
       <div className="flex-1 flex items-center justify-center p-6">
         <form onSubmit={formik.handleSubmit} className="card-surface max-w-xl w-full text-center" noValidate>
           <h1 className="text-3xl font-semibold mb-3">Forgot Password?</h1>
-          <p className="text-sm mb-6 text-gray-400">Enter your email address and we'll send you a 4 digit verification code to reset your password.</p>
+          <p className="text-sm mb-6 text-gray-400">Enter your email address and we&apos;ll send you a 4 digit verification code to reset your password.</p>
           {formik.touched.email && formik.errors.email ? <div className="text-sm text-red-600 mb-2">{formik.errors.email}</div> : <div className="h-0 mb-2" />}
 
           <div className="mb-6 relative">
-            <img src="/images/mail-icon.svg" alt="mail" className="w-5 h-5 absolute left-4 top-1/2 transform -translate-y-1/2 opacity-80" />
+            <Image src="/images/mail-icon.svg" alt="mail" width={20} height={20} className="w-5 h-5 absolute left-4 top-1/2 transform -translate-y-1/2 opacity-80" />
             <input
               id="email"
               name="email"

@@ -12,7 +12,7 @@ export function useAuth(){
     try{
       const raw = localStorage.getItem(STORAGE_KEY);
       setUser(raw ? JSON.parse(raw) : null);
-    }catch(err){
+    }catch{
       setUser(null);
     }
 
@@ -20,7 +20,7 @@ export function useAuth(){
       try{
         const raw = localStorage.getItem(STORAGE_KEY);
         setUser(raw ? JSON.parse(raw) : null);
-      }catch(err){ setUser(null); }
+      }catch{ setUser(null); }
     }
 
     window.addEventListener('storage', onAuth);

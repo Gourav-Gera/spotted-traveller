@@ -2,6 +2,7 @@
 
 import React, { useRef, useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function EditCampaignPage({ params }: { params: { id: string } }) {
   const id = params?.id || '1';
@@ -73,13 +74,13 @@ export default function EditCampaignPage({ params }: { params: { id: string } })
           <button type="button" onClick={triggerUpload} className="inline-flex items-center gap-2 border border-[#4A5D52] rounded-full px-6 py-2 text-xs cursor-pointer text-[var(--primary)]">+ Upload Photo</button>
           {previews.length > 0 && (
             <div className="mt-4 flex items-center gap-3 justify-center flex-wrap">
-              {previews.map((src, i) => <img key={i} src={src} alt={`prev-${i}`} className="w-24 h-24 object-cover rounded-md border" />)}
+              {previews.map((src, i) => <Image key={i} src={src} alt={`prev-${i}`} width={96} height={96} unoptimized className="w-24 h-24 object-cover rounded-md border" />)}
             </div>
           )}
         </div>
         <label className="flex items-start gap-2 text-[10px] leading-relaxed text-[var(--gray)]">
           <input type="checkbox" className="mt-1" defaultChecked />
-          <span>I hereby confirm that all information provided in this crowdfunding campaign is true, complete, and submitted in good faith. I understand that the campaign must comply with municipal regulations and community standards. By submitting this form, I agree to the platform's Privacy Policy and accept responsibility for the content and purpose of this campaign.</span>
+          <span>I hereby confirm that all information provided in this crowdfunding campaign is true, complete, and submitted in good faith. I understand that the campaign must comply with municipal regulations and community standards. By submitting this form, I agree to the platform&apos;s Privacy Policy and accept responsibility for the content and purpose of this campaign.</span>
         </label>
         <button className="w-full bg-[var(--primary)] text-white rounded-full py-4 text-sm font-medium cursor-pointer shadow-sm">Save Changes</button>
       </div>

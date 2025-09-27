@@ -2,7 +2,7 @@
 import React, { useMemo, useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { FiCheck, FiPlus, FiTrash2 } from "react-icons/fi";
+import { FiPlus } from "react-icons/fi";
 
 // sample rows to mirror the other table pages
 const rows = Array.from({ length: 10 }).map((_, i) => ({
@@ -75,8 +75,7 @@ export default function CitiesPage() {
     return out;
   }, [q, selectedLocation, selectedAccommodationRange, selectedAttractionRange]);
 
-  // avatar error state (same pattern as bookings)
-  const [avatarError, setAvatarError] = useState<Record<number, boolean>>({});
+  // avatar error state (not used in this page)
   // dropdown state for filter buttons
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const filtersRef = useRef<HTMLDivElement | null>(null);
@@ -187,7 +186,7 @@ export default function CitiesPage() {
         <div className="card-surface p-0 mb-6 overflow-hidden rounded-2xl">
           {/* Desktop table */}
           <div className="relative hidden md:block">
-            <div ref={tableRef as any} className="overflow-x-auto booking-table-wrap" onScroll={() => updateScrollButtons()}>
+            <div ref={tableRef} className="overflow-x-auto booking-table-wrap" onScroll={() => updateScrollButtons()}>
               <table className="min-w-full text-sm booking-table table-fixed">
                 <thead>
                   <tr className="text-left text-[var(--gray)]">

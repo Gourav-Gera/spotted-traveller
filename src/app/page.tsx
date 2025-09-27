@@ -1,7 +1,9 @@
 import Image from "next/image";
+import Link from "next/link";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import CityExplorer from "../components/CityExplorer";
+import WorldAttractions from "../components/WorldAttractions";
 import TestimonialsSlider from "../components/TestimonialsSlider";
 
 // Landing Page redesigned per provided screenshot (static, no interactivity yet)
@@ -11,15 +13,15 @@ export default function Home() {
       <Header />
       {/* HERO (Full banner with centered overlay) */}
       <section className="w-full px-4 mt-6">
-        <div className="max-w-7xl mx-auto relative rounded-[28px] overflow-hidden h-[380px] md:h-[440px]">
+        <div className="max-w-7xl mx-auto relative rounded-[28px] overflow-hidden h-[380px] md:h-[540px]">
           <Image
-            src="/images/home-banner-img.webp"
+            src="/images/home-img.png"
             alt="Sunset over Italian city"
             fill
             priority
             className="object-cover"
           />
-          <div className="absolute inset-0 bg-black/45" />
+          <div className="absolute inset-0 bg-black/15" />
           <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6">
             <h1 className="text-3xl md:text-5xl font-medium tracking-tight text-white mb-6 leading-snug max-w-3xl">
               Uncover timeless beauty <br className="hidden md:block" /> in <span className="font-semibold">Italy.</span>
@@ -27,9 +29,9 @@ export default function Home() {
             <p className="text-sm md:text-base text-gray-200 leading-relaxed max-w-xl mb-8">
               In quis eleifend mi. Ut tincidunt bibendum mattis. Quisque ultrices nulla pharetra risus feugiat, eget pellentesque erat vulputate.
             </p>
-            <button className="bg-[#1F3328] hover:bg-[#16261d] text-white rounded-full px-7 py-2.5 text-sm font-medium transition-colors shadow-md">
-              Get Started Now →
-            </button>
+            <Link href="/cities" className="bg-[#4A5D52] hover:bg-[#4A5D52] text-white rounded-full px-7 py-2.5 text-sm font-medium transition-colors shadow-md">
+              Get Started Now <Image src="/images/arrow-right-icon.svg" alt="Arrow Right Icon" width={16} height={16} className="inline-block ml-2 align-middle" />
+            </Link>
           </div>
         </div>
       </section>
@@ -40,7 +42,7 @@ export default function Home() {
       {/* ACCOMMODATIONS */}
       <section className="w-full px-4 mt-16">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl tracking-wide text-black-heading font-semibold mb-4">Famous Accommodation</h2>
+          <h2 className="text-4xl tracking-wide text-black-heading font-semibold mb-4">Famous Accommodation</h2>
           <p className="max-w-xl mb-8">Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit</p>
           <div className="grid gap-6 md:grid-cols-4">
             {[1,2,3,4].map(i=> (
@@ -68,24 +70,7 @@ export default function Home() {
       {/* ATTRACTIONS MAP */}
       <section className="w-full px-4 mt-16">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl tracking-wide text-black-heading font-semibold mb-4 text-center">Top Attractions</h2>
-          <p className="max-w-xl mx-auto mb-8 text-center">Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit</p>
-          <div className="relative rounded-2xl overflow-hidden bg-[#F7F5EF] p-10">
-            <div className="relative w-full h-64 md:h-72">
-              <Image src="/images/map-image.png" alt="Map" fill className="object-contain opacity-30" />
-              {/* floating avatars */}
-              {[
-                {top:'15%',left:'12%'},{top:'55%',left:'22%'},{top:'30%',left:'45%'},{top:'65%',left:'55%'},{top:'25%',left:'70%'},{top:'50%',left:'78%'}
-              ].map((p,i)=>(
-                <div key={i} style={{top:p.top,left:p.left}} className="absolute -translate-x-1/2 -translate-y-1/2 flex flex-col items-center gap-1">
-                  <div className="w-10 h-10 rounded-full bg-white shadow flex items-center justify-center text-[10px] font-medium">
-                    <Image src="/images/user-thumb-table.svg" alt="User" width={26} height={26} />
-                  </div>
-                  <span className="text-[10px] bg-white px-2 py-0.5 rounded-full shadow-sm text-gray-600">Attraction</span>
-                </div>
-              ))}
-            </div>
-          </div>
+          <WorldAttractions />
         </div>
       </section>
 

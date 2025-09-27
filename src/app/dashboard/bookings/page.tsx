@@ -94,7 +94,7 @@ export default function BookingsPage() {
 
           <div className="mt-4">
             <div className="relative hidden md:block">
-              <div ref={tableRef as any} className="overflow-x-auto booking-table-wrap" onScroll={() => updateScrollButtons()}>
+              <div ref={tableRef} className="overflow-x-auto booking-table-wrap" onScroll={() => updateScrollButtons()}>
               <table className="min-w-full text-sm booking-table table-fixed">
                 <thead>
                   <tr className="text-left bg-[#F6F6F6] text-[var(--gray)]">

@@ -4,7 +4,7 @@ import Link from 'next/link';
 import MultiImageUploader from '@/components/MultiImageUploader';
 
 export default function NewProductPage(){
-  const [images, setImages] = useState<File[]>([]);
+  const [, setImages] = useState<File[]>([]);
 
   return (
     <div className="min-h-screen p-0">

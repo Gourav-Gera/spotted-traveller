@@ -2,7 +2,6 @@
 import React, { useState, useMemo } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import CityExplorer from '../../components/CityExplorer';
 import MainHeader from '../../components/MainHeader';
 import MainFooter from '../../components/MainFooter';
 import { cities as CITY_LIST } from '../../data/cities';
@@ -26,48 +25,56 @@ export default function CitiesLandingPage(){
     <div className="min-h-screen bg-[#F2F2F2] flex flex-col">
       <MainHeader />
 
-      <main className="max-w-7xl mx-auto px-4 md:px-6 pt-10 pb-24">
-        <div className="mb-8">
-          <h1 className="text-xl font-semibold mb-2">Explore Cities</h1>
-          <div className="flex items-center gap-2 w-full max-w-md bg-white rounded-full px-4 py-3 border border-[#E5E5E5]">
+      <main className="max-w-7xl w-full mx-auto md:px-0 pt-8 pb-24">
+        {/* Header row: title left, search right */}
+        <div className="mb-10 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+          <h1 className="text-[28px] md:text-[32px] font-semibold tracking-tight text-[#222]">Explore Cities</h1>
+          <div className="flex items-center gap-2 w-full md:w-[540px] lg:w-[620px] bg-white rounded-full px-5 py-3 border border-[#E5E5E5] shadow-sm">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-gray-400"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-            <input value={query} onChange={e=>setQuery(e.target.value)} placeholder="Search cities..." className="flex-1 outline-none text-sm bg-transparent placeholder:text-gray-400" />
+            <input value={query} onChange={e=>setQuery(e.target.value)} placeholder="Search by city name..." className="flex-1 outline-none text-sm bg-transparent placeholder:text-gray-400" />
           </div>
         </div>
 
-        <div className="space-y-8">
-          {filtered.map((c,i)=>{
-            const reversed = i % 2 === 1; // alternate image / card alignment similar to screenshot
+        {/* Alternating rows with floating card beside the large image */}
+        <div className="space-y-12 md:space-y-16">
+          {filtered.map((c, i) => {
+            const reversed = i % 2 === 1;
             return (
-              <div key={c.slug} className={`grid md:grid-cols-2 gap-4 md:gap-6 items-stretch ${reversed? 'md:[&>*:first-child]:order-2' : ''}`}>
-                <div className="relative rounded-xl overflow-hidden shadow-sm bg-gray-200 h-52 md:h-56">
-                  <Image src={c.thumb} alt={c.name} fill className="object-cover" />
+              <section key={c.slug} className="relative">
+                {/* Image block */}
+                <div className={`relative h-[200px] sm:h-[240px] md:h-[300px] bg-gray-200 rounded-[14px] overflow-hidden shadow-sm md:w-[56%] ${reversed ? 'md:ml-auto' : ''}`}>
+                  <Image src={c.thumb} alt={c.name} fill priority={i<2} className="object-cover" />
                 </div>
-                <div className="bg-white rounded-xl p-5 md:p-6 flex flex-col justify-between shadow-sm relative">
-                  <div>
-                    <div className="flex items-center gap-2 mb-3">
-                      <div className="w-8 h-8 bg-[#3F4C43] rounded overflow-hidden flex items-center justify-center">
-                        <Image src="/images/cities-icon.svg" alt="city icon" width={20} height={20} className="w-5 h-5 object-contain" />
-                      </div>
-                      <h2 className="text-sm font-semibold tracking-tight">{c.name}</h2>
+
+                {/* Floating card */}
+                <div
+                  className={`md:absolute md:top-1/2 md:-translate-y-1/2 ${reversed ? 'md:left-8' : 'md:right-8'} md:w-[50%]`}
+                >
+                  <div className="mt-4 md:mt-0 bg-white border border-[#E7EAEE] rounded-[18px] shadow-[0_14px_40px_-10px_rgba(2,6,23,0.15)] p-5 md:p-7">
+                    <div className="flex items-center gap-3 mb-3">
+                      <span className="inline-block w-10 h-10 md:w-11 md:h-11 rounded-[10px] bg-[#3E5F55]" aria-hidden="true" />
+                      <h2 className="text-[18px] md:text-[20px] font-semibold text-[#101828]">{c.name}</h2>
                     </div>
-                    <p className="text-[13px] leading-relaxed text-gray-600 mb-4 line-clamp-3">{c.description}</p>
-                  </div>
-                  <div className="flex flex-wrap gap-3 text-xs">
-                    <Link href={`/cities/${c.slug}`} className="px-4 py-2 rounded-full border border-gray-300 hover:bg-gray-50 font-medium">Discover</Link>
-                    <Link href={`/cities/${c.slug}#attractions`} className="px-4 py-2 rounded-full border border-gray-300 hover:bg-gray-50 font-medium">Attractions</Link>
+                    <p className="text-[13px] md:text-[14px] leading-relaxed text-[#667085] mb-4 md:mb-5 line-clamp-3">{c.description}</p>
+                    <div>
+                      <Link
+                        href={`/cities/${c.slug}`}
+                        className="inline-flex items-center gap-2 rounded-full border border-[#D0D5DD] px-4 md:px-5 py-2.5 text-sm font-medium text-[#101828] hover:bg-gray-50 transition-colors"
+                      >
+                        Explore {c.name}
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="w-4 h-4"><path d="M9 18l6-6-6-6" strokeLinecap="round" strokeLinejoin="round" /></svg>
+                      </Link>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </section>
             );
           })}
+
           {filtered.length === 0 && (
             <div className="text-center text-sm text-gray-500 py-20">No cities match that search.</div>
           )}
         </div>
-
-        {/* Optional secondary explorer block reuse */}
-        <CityExplorer />
       </main>
 
       <MainFooter />

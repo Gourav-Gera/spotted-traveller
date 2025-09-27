@@ -10,7 +10,7 @@ export default function AttractionDetailPage({ params }: { params: { id: string 
   const id = params?.id || '1';
   const title = 'Colosseum';
 
-  const images = ['/images/rome-city-image-1.png','/images/rome-city-image-2.png','/images/rome-city-image-3.png','/images/rome-city-image-1.png'];
+  const images = useMemo(()=>['/images/rome-city-image-1.png','/images/rome-city-image-2.png','/images/rome-city-image-3.png','/images/rome-city-image-1.png'],[]);
   const perSlide = 2;
   const slides = useMemo(()=>{
     const groups:string[][]=[];

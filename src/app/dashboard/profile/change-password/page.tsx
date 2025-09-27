@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from 'react';
+import Image from 'next/image';
 
 export default function ChangePasswordPage(){
   const [current, setCurrent] = useState('');
@@ -34,7 +35,7 @@ export default function ChangePasswordPage(){
               placeholder="Current password"
               aria-label="Current password"
             />
-            <img
+            <Image
               src="/images/eye-fill.svg"
               alt={showCurrent ? 'hide password' : 'show password'}
               onClick={()=>setShowCurrent(s=>!s)}
@@ -42,6 +43,8 @@ export default function ChangePasswordPage(){
               tabIndex={0}
               onKeyDown={(e)=>{ if(e.key==='Enter' || e.key===' ') { e.preventDefault(); setShowCurrent(s=>!s);} }}
               className="w-5 h-5 absolute right-4 top-1/2 transform -translate-y-1/2 opacity-80 cursor-pointer select-none"
+              width={20}
+              height={20}
             />
           </div>
         </div>

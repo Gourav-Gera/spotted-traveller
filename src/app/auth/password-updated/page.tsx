@@ -2,6 +2,7 @@
 import React from "react";
 import { useRouter } from "next/navigation";
 import Link from 'next/link';
+import Image from 'next/image';
 
 function AuthHeader({ rightLabel, rightHref }: { rightLabel?: string; rightHref?: string }){
   return (
@@ -24,7 +25,7 @@ export default function PasswordUpdated(){
           <h1 className="text-4xl font-bold mb-3">Password Updated</h1>
           <p className="text-md text-gray-400 mb-10">Your password has been reset successfully.</p>
           <div className="mb-10 flex items-center justify-center">
-            <img src="/images/password-updated-icon.svg" alt="password updated" className="w-60 h-52 object-contain" />
+            <Image src="/images/password-updated-icon.svg" alt="password updated" width={240} height={208} className="w-60 h-52 object-contain" />
           </div>
          
           <div className="px-6">

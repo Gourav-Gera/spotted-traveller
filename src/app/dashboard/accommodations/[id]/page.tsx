@@ -10,7 +10,7 @@ export default function AccommodationDetailPage({ params }: { params: { id: stri
   const id = params?.id || '1';
   const title = 'Hotel Park Palace';
 
-  const images = ['/images/why-1.webp','/images/why-2.webp','/images/why-3.webp','/images/why-1.webp'];
+  const images = useMemo(()=>['/images/why-1.webp','/images/why-2.webp','/images/why-3.webp','/images/why-1.webp'],[]);
   const perSlide = 2;
   const slides = useMemo(()=>{
     const groups:string[][]=[];

@@ -7,7 +7,7 @@ import MultiImageUploader from '@/components/MultiImageUploader';
 // Edit page visually matches the "new event" design
 export default function EditEventPage({ params }:{ params:{ id:string }}) {
   const id = params.id;
-  const [images, setImages] = useState<File[]>([]);
+  const [, setImages] = useState<File[]>([]);
 
   return (
     <div className="min-h-screen p-0 ">

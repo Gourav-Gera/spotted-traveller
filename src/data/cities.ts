@@ -53,10 +53,14 @@ export const accommodations: Accommodation[] = Array.from({length:18}).map((_,i)
 }));
 
 export const attractions: Attraction[] = [
-  { id:'att-1', city:'rome', name:'Colosseum', image:'/images/rome-city-image-1.png', blurb:'Iconic ancient amphitheatre.'},
-  { id:'att-2', city:'rome', name:'Trevi Fountain', image:'/images/rome-city-image-2.png', blurb:'Baroque fountain legend.'},
-  { id:'att-3', city:'rome', name:'Pantheon', image:'/images/rome-city-image-3.png', blurb:'Temple turned church marvel.'},
-  { id:'att-4', city:'genoa', name:'Old Port', image:'/images/rome-city-image-3.png', blurb:'Revitalised waterfront.'}
+  { id:'att-1', city:'rome', name:'Colosseum', image:'/images/attraction-img-1.png', blurb:'Iconic ancient amphitheatre.'},
+  { id:'att-2', city:'rome', name:"Saint Peter's Basilica", image:'/images/attraction-img-2.png', blurb:'Renaissance dome & papal basilica.'},
+  { id:'att-3', city:'rome', name:'Roman Forum', image:'/images/attraction-img-3.png', blurb:'Center of ancient Roman life.'},
+  { id:'att-4', city:'rome', name:'Trevi Fountain', image:'/images/attraction-img-4.png', blurb:'Baroque fountain legend.'},
+  { id:'att-5', city:'rome', name:'Pantheon', image:'/images/attraction-img-5.png', blurb:'Temple turned church marvel.'},
+  { id:'att-6', city:'genoa', name:'Old Port', image:'/images/attraction-img-6.png', blurb:'Revitalised waterfront.'},
+  { id:'att-7', city:'genoa', name:'Cathedral of Genoa', image:'/images/attraction-img-7.png', blurb:'Medieval cathedral & art.'},
+  { id:'att-8', city:'genoa', name:'Harbour Promenade', image:'/images/attraction-img-8.png', blurb:'Seaside views & cultural spots.'}
 ];
 
 export const events: EventItem[] = [

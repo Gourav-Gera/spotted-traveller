@@ -4,14 +4,14 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 export default function ProductDetailPage({ params }: { params: { id: string } }) {
-  const productImages = [
+  const productImages = useMemo(()=>[
     '/images/rome-city-image-1.png',
     '/images/rome-city-image-2.png',
     '/images/rome-city-image-3.png',
     '/images/rome-city-image-1.png',
     '/images/rome-city-image-2.png',
     '/images/rome-city-image-3.png'
-  ];
+  ],[]);
   const colors = ['#1c1f20','#2c3e2f','#ffb240','#15a24a','#fefefe'];
   const sizes = ['S','M','L','XL','XXL'];
   const reviews = Array.from({length:6}).map((_,i)=>({id:i+1,name:'William',rating:5,text:'Etiam egestas magna purus, quis vehicula enim euismod in. Duis vestibulum purus ac arcu elementum, id vestibulum nisl pulvinar. Nullam venenatis iaculis sapien, volutpat dapibus est tristique eget.'}));

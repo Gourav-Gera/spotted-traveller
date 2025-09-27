@@ -19,7 +19,7 @@ export default function EventDetailPage({ params }: { params: { id: string } }) 
   const id = params?.id || "1";
   const title = "Florence Jazz Festival";
 
-  const images = ["/images/why-1.webp","/images/why-2.webp","/images/why-3.webp","/images/why-1.webp"]; // duplicate for demo
+  const images = useMemo(()=>["/images/why-1.webp","/images/why-2.webp","/images/why-3.webp","/images/why-1.webp"],[]); // duplicate for demo
   const perSlide = 2;
   const slides = useMemo(()=>{
     const groups:string[][]=[];

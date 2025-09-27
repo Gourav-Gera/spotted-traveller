@@ -4,7 +4,6 @@ import EarningChart from '../../../components/EarningChart';
 import Image from 'next/image';
 import Link from 'next/link';
 import { BiSearch } from 'react-icons/bi';
-import { FiEye, FiEdit } from 'react-icons/fi';
 
 export default function EarningsPage(){
   const [mode,setMode] = useState<'monthly'|'weekly'|'today'>('monthly');
@@ -162,9 +161,9 @@ export default function EarningsPage(){
                 </tr>
               </thead>
               <tbody>
-                {filteredRows.map((r,i)=>(
+                {filteredRows.map((r, idx)=>(
                   <tr key={r.id} className="align-middle">
-                    <td className="py-4">{String(i+1).padStart(2,'0')}</td>
+                    <td className="py-4">{String(idx+1).padStart(2,'0')}</td>
                     <td className="py-4">{r.id}</td>
                     <td className="py-4">
                       <div className="flex items-center gap-3">
@@ -199,7 +198,7 @@ export default function EarningsPage(){
 
         {/* Mobile stacked cards (mirroring Cities style) */}
         <div className="md:hidden space-y-4">
-          {rows.map((r,i)=>(
+          {rows.map((r)=>(
             <div key={r.id} className="bg-white rounded-lg p-4 shadow-sm">
               <div className="flex items-start gap-3">
                 <div className="w-14 h-14 bg-gray-100 rounded-md" />

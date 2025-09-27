@@ -14,7 +14,7 @@ export default function CityDetailPage({ params }: Props) {
   const slug = params?.slug || 'City';
   const title = decodeURIComponent(slug);
 
-  const images = ['/images/rome-city-img.png','/images/rome-city-image-2.png','/images/rome-city-img-3.png','/images/rome-city-image-1.png'];
+  const images = useMemo(()=>['/images/rome-city-img.png','/images/rome-city-image-2.png','/images/rome-city-img-3.png','/images/rome-city-image-1.png'],[]);
   const perSlide = 3;
   const slides = useMemo(()=>{
     const groups:string[][]=[];

@@ -7,7 +7,7 @@ import MultiImageUploader from '@/components/MultiImageUploader';
 const SAMPLE_TAGS = ['beach','historic','mountain','family-friendly','romantic','nightlife'];
 
 export default function NewCityPage() {
-  const [images, setImages] = useState<File[]>([]);
+  const [, setImages] = useState<File[]>([]);
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
 
@@ -36,7 +36,7 @@ export default function NewCityPage() {
         // In a real app, fetch city details here to prefill description, tags, images, etc.
         setDescription('');
       }
-    } catch (e) {
+    } catch {
       // ignore on server or malformed URL
     }
   }, []);

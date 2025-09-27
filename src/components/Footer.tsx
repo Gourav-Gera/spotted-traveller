@@ -5,7 +5,7 @@ interface FooterProps { compact?: boolean }
 const Footer: React.FC<FooterProps> = ({ compact = false }) => {
   const year = new Date().getFullYear();
   return (
-    <footer className={`w-full mt-24 ${compact ? 'py-0' : 'pt-0'} bg-[#3B3D41] text-gray-300`}>
+    <footer className={`w-full ${compact ? 'py-0' : 'pt-0'} bg-[#3B3D41] text-gray-300`}>
       <div className="max-w-7xl mx-auto pt-12 pb-2">
         {!compact && (
           <div className="flex flex-col md:flex-row gap-14 md:gap-24">

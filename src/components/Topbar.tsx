@@ -2,7 +2,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import Link from 'next/link';
 import Image from 'next/image';
-import { BiSearch, BiBell } from 'react-icons/bi';
+import { BiSearch } from 'react-icons/bi';
 import { useAuth } from '../hooks/useAuth';
 type Props = { onToggle?: () => void };
 
@@ -63,9 +63,11 @@ export default function Topbar({ onToggle }: Props) {
             className="flex items-center gap-2 sm:gap-3 cursor-pointer rounded-full bg-[#4A5D52] sm:pl-5 sm:pr-0 sm:py-0 text-white px-0"
           >
             <div className="hidden sm:block text-sm font-semibold px-3">{user ? `Hello, ${user.name}` : 'Hello'}</div>
-            <img
+            <Image
               src={user?.avatar ? user.avatar : (user ? `https://ui-avatars.com/api/?name=${encodeURIComponent(user.name)}` : 'https://randomuser.me/api/portraits/men/32.jpg')}
               alt="User"
+              width={40}
+              height={40}
               className="w-10 h-10 rounded-full border-2 border-white object-cover"
             />
           </button>

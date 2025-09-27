@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from 'react';
+import Image from 'next/image';
 
 export default function SubscriptionPage(){
   const [plan] = useState({ name:'Basic', price:19, period:'month', nextBilling:'12 August 2025', card:'6037' });
@@ -31,7 +32,7 @@ export default function SubscriptionPage(){
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
             <div className="flex items-center gap-3 text-base font-medium">
               <span className="w-10 h-10 rounded-lg bg-gray-100 flex items-center justify-center">
-                <img src="/images/payment-detail-icon.svg" alt="payment method" className="w-5 h-5" />
+                <Image src="/images/payment-detail-icon.svg" alt="payment method" width={20} height={20} className="w-5 h-5" />
               </span>
               <span>************{plan.card}</span>
             </div>

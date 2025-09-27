@@ -4,6 +4,7 @@ import MainHeader from '../../../components/MainHeader';
 import MainFooter from '../../../components/MainFooter';
 import Image from 'next/image';
 import Link from 'next/link';
+import CityMediaGallery from '../../../components/CityMediaGallery';
 import { getCity, getCityAccommodations, getCityAttractions, getCityEvents } from '../../../data/cities';
 
 interface CityPageProps { params: { slug: string } }
@@ -26,83 +27,37 @@ export default function CityPage({ params }: CityPageProps){
     <div className="min-h-screen flex flex-col bg-[#F5F6F5]">
       <MainHeader />
       <main className="flex-1">
-        {/* Hero */}
-        <section className="relative">
-          <div className="absolute inset-0">
-            <Image src={city.hero} alt={city.name} fill className="object-cover" />
-            <div className="absolute inset-0 bg-[#1A211E]/60" />
-          </div>
-          <div className="relative max-w-6xl mx-auto px-6 pt-28 pb-24 text-white">
-            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur px-3 py-1 rounded-full text-[11px] mb-5">
-              <span className="uppercase tracking-wide">{city.country}</span>
-              <span className="text-white/40">•</span>
-              <span>{city.region}</span>
-            </div>
-            <h1 className="text-3xl md:text-5xl font-bold tracking-tight mb-5">Explore {city.name}</h1>
-            <p className="max-w-2xl text-sm md:text-base text-gray-200 leading-relaxed mb-6">{city.description}</p>
-            <div className="flex flex-wrap gap-3 text-[11px]">
-              {city.tags.map(t => (
-                <span key={t} className="px-3 py-1 rounded-full bg-white/15 backdrop-blur border border-white/20 tracking-wide uppercase">{t}</span>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Municipality */}
-        <section id="municipality" className="max-w-6xl mx-auto px-6 py-16">
-          <div className="grid md:grid-cols-5 gap-10 md:gap-12 items-start">
-            <div className="md:col-span-2 space-y-6">
-              <h2 className="text-xl md:text-2xl font-semibold tracking-tight">{city.municipality.heading}</h2>
-              {city.municipality.body.map((p,i)=>(
-                <p key={i} className="text-sm leading-relaxed text-gray-600">{p}</p>
-              ))}
-              <div className="flex flex-wrap gap-3 pt-2">
-                <Link href="#accommodations" className="text-[12px] font-medium text-[#254E3E] hover:underline">Accommodations</Link>
-                <Link href="#attractions" className="text-[12px] font-medium text-[#254E3E] hover:underline">Attractions</Link>
-                <Link href="#events" className="text-[12px] font-medium text-[#254E3E] hover:underline">Events</Link>
+        {/* Top: gallery + details (as per Figma) */}
+        <section className="max-w-7xl mx-auto pt-10 pb-8">
+          <div className="grid md:grid-cols-2 gap-8 items-start">
+            <CityMediaGallery images={[city.hero, ...city.gallery]} alt={city.name} />
+            <div>
+              <h1 className="text-2xl md:text-3xl font-semibold tracking-tight mb-3">{city.name}</h1>
+              <p className="text-sm text-gray-600 leading-relaxed mb-6">{city.description}</p>
+              <div className="flex flex-wrap gap-3 mb-8">
+                {city.tags.map((t, idx) => (
+                  <span key={t} className="inline-flex items-center gap-2 text-[12px] px-4 py-2 rounded-full bg-[#8B3F09] text-white">
+                    {idx === 0 && <span className="w-3 h-3 bg-white/80 rounded-sm" />} {t}
+                  </span>
+                ))}
               </div>
             </div>
-            <div className="md:col-span-3 grid sm:grid-cols-2 gap-4">
-              {city.municipality.images.map((img,i)=>(
-                <div key={i} className="relative h-48 rounded-xl overflow-hidden bg-gray-200">
-                  <Image src={img} alt="municipality" fill className="object-cover" />
-                </div>
-              ))}
+          </div>
+        </section>
+
+        {/* Accommodations (first section as in design) */}
+        <section id="accommodations" className="max-w-6xl mx-auto px-4 md:px-8 py-12">
+          <div className="flex items-end justify-between mb-6">
+            <div>
+              <h2 className="text-[22px] md:text-[24px] font-semibold tracking-tight">Accommodation in {city.name}</h2>
+              <p className="text-[13px] text-gray-500 mt-1">Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint.</p>
             </div>
+            <Link href="#" className="inline-flex items-center gap-2 text-[12px] text-[#254E3E] font-medium border rounded-full px-3 py-1.5 hover:bg-gray-50">See All <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M9 18l6-6-6-6" strokeLinecap="round" strokeLinejoin="round"/></svg></Link>
           </div>
-        </section>
-
-        {/* Attractions */}
-        <section id="attractions" className="max-w-6xl mx-auto px-6 py-12">
-          <div className="flex items-end justify-between mb-6">
-            <h2 className="text-lg md:text-xl font-semibold tracking-tight">Top Attractions</h2>
-            <Link href="#" className="text-[12px] text-[#254E3E] font-medium hover:underline">View all</Link>
-          </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {attractions.map(a => (
-              <div key={a.id} className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden group">
-                <div className="relative h-40 bg-gray-100">
-                  <Image src={a.image} alt={a.name} fill className="object-cover group-hover:scale-105 transition-transform" />
-                </div>
-                <div className="p-4">
-                  <h3 className="text-sm font-semibold mb-1">{a.name}</h3>
-                  <p className="text-[12px] text-gray-600 line-clamp-2">{a.blurb}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* Accommodations */}
-        <section id="accommodations" className="max-w-6xl mx-auto px-6 py-12">
-          <div className="flex items-end justify-between mb-6">
-            <h2 className="text-lg md:text-xl font-semibold tracking-tight">Places to Stay</h2>
-            <Link href="#" className="text-[12px] text-[#254E3E] font-medium hover:underline">Browse all</Link>
-          </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {accommodations.map(stay => (
               <div key={stay.id} className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden flex flex-col">
-                <div className="relative h-40 bg-gray-100">
+                <div className="relative h-36 bg-gray-100">
                   <Image src={stay.images[0]} alt={stay.name} fill className="object-cover" />
                   <div className="absolute top-2 right-2 bg-black/50 text-white text-[11px] px-2 py-1 rounded-full">{stay.rating.toFixed(1)}</div>
                 </div>
@@ -119,25 +74,67 @@ export default function CityPage({ params }: CityPageProps){
           </div>
         </section>
 
-        {/* Events */}
-        <section id="events" className="max-w-6xl mx-auto px-6 py-12">
-          <div className="flex items-end justify-between mb-6">
-            <h2 className="text-lg md:text-xl font-semibold tracking-tight">Upcoming Events</h2>
-            <Link href="/events" className="text-[12px] text-[#254E3E] font-medium hover:underline">All events</Link>
+        {/* Municipality CTA Banner */}
+        <section id="municipality" className="max-w-6xl mx-auto px-4 md:px-8 py-8">
+          <div className="bg-[#8B3F09] text-white rounded-xl px-6 md:px-8 py-6 md:py-7 flex items-center justify-between shadow">
+            <div className="pr-4">
+              <h2 className="text-[18px] md:text-[20px] font-semibold">Meet the Municipality</h2>
+              <p className="text-[12px] md:text-[13px] opacity-95 mt-1 max-w-2xl">{city.municipality.body[0] || 'Learn about local support, services, and programs.'}</p>
+            </div>
+            <Link href="#" className="inline-flex items-center gap-2 bg-white text-[#8B3F09] rounded-full px-4 py-2 text-sm font-medium hover:bg-white/90">Explore <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M9 18l6-6-6-6" strokeLinecap="round" strokeLinejoin="round"/></svg></Link>
+          </div>
+        </section>
+
+        {/* Attractions */}
+        <section id="attractions" className="max-w-6xl mx-auto px-4 md:px-8 py-12">
+          <div className="flex items-start justify-between mb-4">
+            <div>
+              <h2 className="text-lg md:text-xl font-semibold tracking-tight">Attraction Points in {city.name}</h2>
+              <p className="text-[12px] text-gray-500 mt-1 max-w-xl">Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.</p>
+            </div>
+            <Link href="#" className="inline-flex items-center gap-2 text-[12px] border border-gray-200 rounded-full px-3 py-1.5 hover:bg-gray-50">See All <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M9 18l6-6-6-6" strokeLinecap="round" strokeLinejoin="round"/></svg></Link>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {attractions.map(a => (
+              <div key={a.id} className="relative overflow-hidden rounded-xl">
+                <div className="relative h-36 md:h-40">
+                  <Image src={a.image} alt={a.name} fill className="object-cover" />
+                </div>
+                <span className="absolute left-2 bottom-2 text-[11px] text-white bg-black/60 rounded px-2 py-0.5">{a.name}</span>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        
+
+        {/* Events */}
+        <section id="events" className="max-w-6xl mx-auto px-4 md:px-8 py-12">
+          <div className="flex items-start justify-between mb-4">
+            <div>
+              <h2 className="text-lg md:text-xl font-semibold tracking-tight">Upcoming Events in {city.name}</h2>
+              <p className="text-[12px] text-gray-500 mt-1 max-w-xl">Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.</p>
+            </div>
+            <Link href="/events" className="inline-flex items-center gap-2 text-[12px] border border-gray-200 rounded-full px-3 py-1.5 hover:bg-gray-50">See All <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M9 18l6-6-6-6" strokeLinecap="round" strokeLinejoin="round"/></svg></Link>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {events.map(ev => (
               <div key={ev.id} className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden flex flex-col">
-                <div className="relative h-36 bg-gray-100">
+                {/* image header */}
+                <div className="relative h-40 md:h-[250px] bg-gray-100">
                   <Image src={city.hero} alt={ev.title} fill className="object-cover" />
-                  <div className="absolute top-2 left-2 text-[10px] uppercase bg-black/60 text-white px-2 py-1 rounded-full">Event</div>
                 </div>
-                <div className="p-4 flex flex-col gap-2 flex-1">
-                  <h3 className="text-sm font-semibold leading-snug">{ev.title}</h3>
-                  <p className="text-[12px] text-gray-600 line-clamp-2">Happening on {new Date(ev.date).toLocaleDateString(undefined,{ month:'short', day:'numeric'})}</p>
-                  <div className="mt-auto flex items-center justify-between text-[12px] pt-1">
-                    <span className="text-gray-500">{ev.price}</span>
-                    <Link href="/events" className="text-[#254E3E] hover:underline font-medium">Details</Link>
+                {/* content */}
+                <div className="p-5 flex-1 flex flex-col">
+                  <div className="flex items-center justify-between text-[12px] text-gray-600">
+                    <span className="inline-flex items-center gap-1"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>{new Date(ev.date).toLocaleDateString(undefined,{ day:'2-digit', month:'short', year:'numeric'})}</span>
+                    <span className="inline-flex items-center gap-1"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>03:00 PM</span>
+                  </div>
+                  <h3 className="text-[15px] font-semibold mt-2">{ev.title}</h3>
+                  <p className="text-[12px] text-gray-600 mt-1">Experience live jazz under the Tuscan stars, with family & friends</p>
+                  <div className="mt-auto pt-3 flex items-center justify-between">
+                    <span className="inline-flex items-center gap-1 text-[12px] px-2 py-1 rounded-full bg-gray-100 text-gray-600"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 10c0 7-9 12-9 12S3 17 3 10a9 9 0 1 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg>{city.name}, {city.country}</span>
+                    <Link href="/events" className="text-[12px] rounded-full border border-[#8B3F09] text-[#8B3F09] px-4 py-1.5 hover:bg-orange-50">Know More</Link>
                   </div>
                 </div>
               </div>

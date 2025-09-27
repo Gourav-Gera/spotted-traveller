@@ -5,7 +5,7 @@ import Link from 'next/link';
 import MultiImageUploader from '@/components/MultiImageUploader';
 
 export default function NewAccommodationPage() {
-  const [images, setImages] = useState<File[]>([]);
+  const [, setImages] = useState<File[]>([]);
 
   return (
     <div className="min-h-screen p-0">
@@ -46,7 +46,7 @@ export default function NewAccommodationPage() {
           <div>
             <div className="rounded-xl border border-[#EDEDED] bg-white p-6 text-center shadow-sm">
               <div className="text-lg text-[var(--gray)] mb-1 font-semibold">Upload Accommodation Images</div>
-              <div className="text-md text-[var(--gray)] mb-6">Add up to 5 images to showcase the city to travelers."</div>
+              <div className="text-md text-[var(--gray)] mb-6">Add up to 5 images to showcase the city to travelers.&quot;</div>
               <MultiImageUploader max={5} onChange={setImages} className="inline-block" />
             </div>
           </div>

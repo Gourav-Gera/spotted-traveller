@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import Image from 'next/image';
 import { usePathname } from "next/navigation";
 import React from "react";
 // Replaced icon components with image assets from /public/images
@@ -67,11 +68,12 @@ export default function Sidebar({ collapsed = false, mobileOpen = false, onClose
                     >
                       <span className={`inline-flex w-8 h-8 items-center justify-center rounded-md ${active ? 'bg-[var(--primary)] ! text-white font-semibold' : ' hover:bg-gray-100'}`}>
                         {/* render image for icon; keep current coloring via classes around the span */}
-                        <img
+                        <Image
                           src={it.icon}
                           alt={`${it.label} icon`}
+                          width={20}
+                          height={20}
                           className="w-5 h-5"
-                          style={active ? { filter: 'brightness(0) invert(1)' } : undefined}
                         />
                       </span>
                       {it.label}
@@ -114,11 +116,12 @@ export default function Sidebar({ collapsed = false, mobileOpen = false, onClose
                   className={`flex items-center gap-1 py-2 rounded-lg ${paddingWhen} ${rowActiveClass}`}
                 >
       <span className={`inline-flex w-8 h-8 items-center justify-center rounded-md ${active ? 'bg-[var(--primary)] text-white' : 'text-gray-600'}`} style={{fontSize:18}}>
-                    <img
+                    <Image
                       src={it.icon}
                       alt={`${it.label} icon`}
+                      width={20}
+                      height={20}
                       className="w-5 h-5"
-                      style={active ? { filter: 'brightness(0) invert(1)' } : undefined}
                     />
                   </span>
                   {!collapsed && it.label}

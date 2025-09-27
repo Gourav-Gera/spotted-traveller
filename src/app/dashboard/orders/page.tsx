@@ -49,7 +49,7 @@ export default function OrdersPage() {
               { key:'delivered', label:'Delivered' },
               { key:'cancelled', label:'Cancelled' },
             ].map(t => (
-              <button key={t.key} onClick={()=>setTab(t.key as any)} className={`pill-tab w-[25%] ${tab===t.key ? 'bg-[var(--primary)] text-white' : ' text-[var(--gray)]'}`}>{t.label}</button>
+              <button key={t.key} onClick={()=>setTab(t.key as 'new'|'dispatched'|'delivered'|'cancelled')} className={`pill-tab w-[25%] ${tab===t.key ? 'bg-[var(--primary)] text-white' : ' text-[var(--gray)]'}`}>{t.label}</button>
             ))}
           </div>
           <div className="hidden sm:flex items-center gap-2 bg-gray-50 rounded-full px-3 py-2 search-pill">
@@ -59,7 +59,7 @@ export default function OrdersPage() {
 
           <div className="mt-4">
             <div className="relative hidden md:block">
-              <div ref={tableRef as any} className="overflow-x-auto booking-table-wrap" onScroll={updateScrollButtons}>
+              <div ref={tableRef} className="overflow-x-auto booking-table-wrap" onScroll={updateScrollButtons}>
                 <table className="min-w-full text-sm booking-table table-fixed">
                   <thead>
                     <tr className="text-left text-gray-400">
