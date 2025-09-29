@@ -58,7 +58,7 @@ export default function ChangePasswordPage(){
         </div>
         {error && <div className="text-sm text-red-500">{error}</div>}
         {success && <div className="text-sm text-green-600">Password updated.</div>}
-        <button disabled={saving} className="w-full rounded-full bg-[#3D4F45] text-white text-base py-4 font-medium disabled:opacity-50">{saving? 'Updating...' : 'Update Password'}</button>
+  <button disabled={saving} className="w-full rounded-full bg-[#4A5D52] text-white text-base py-4 font-medium disabled:opacity-50">{saving? 'Updating...' : 'Update Password'}</button>
       </form>
     </div>
   );

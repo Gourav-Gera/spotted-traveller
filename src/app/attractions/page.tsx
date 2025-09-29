@@ -26,10 +26,10 @@ export default function AttractionsListing(){
   return (
     <div className="min-h-screen flex flex-col bg-white">
       <MainHeader />
-      <main className="flex-1 max-w-[1400px] mx-auto w-full px-6 pt-10 pb-24">
+      <main className="flex-1 max-w-[1400px] mx-auto w-full px-5 sm:px-8 lg:px-10 pt-10 pb-24">
         <header className="mb-6">
           <div className="flex flex-col items-start justify-between gap-6">
-            <h1 className="text-[22px] md:text-[24px] font-semibold tracking-tight text-[#222]">Attraction Points in Italy</h1>
+            <h1 className="text-[26px] md:text-[32px] font-semibold tracking-tight text-[#222] leading-tight">Attraction Points in Italy</h1>
             <div className="hidden md:flex items-center gap-3 w-full">
               <div className="flex items-center gap-2 bg-[#F8F8F8] border border-[#E4E4E4] rounded-full px-5 h-12 w-full">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-gray-400"><circle cx="11" cy="11" r="8" /><path d="m21 21-4.35-4.35" /></svg>
@@ -48,31 +48,47 @@ export default function AttractionsListing(){
           </div>
         </header>
 
-        {/* Two column cards + map column */}
-        <div className="flex items-start gap-8">
-          {/* Left images */}
-          <div className="flex-1 grid grid-cols-2 gap-x-8 gap-y-8 pr-2 max-w-[760px]">
-            {filtered.slice(0,8).map(a => (
-              <Link href={`/attractions/${a.id}`} key={a.id} className="group rounded-[14px] overflow-hidden bg-white relative shadow-sm border border-[#E6E6E6]" style={{height:300}}>
-                <Image src={a.image} alt={a.name} fill className="object-cover group-hover:scale-[1.05] transition-transform duration-500" />
-                <div className="absolute left-0 right-0 bottom-0 px-3 py-3 bg-gradient-to-t from-black/70 via-black/40 to-transparent text-white">
-                  <p className="text-[12px] font-medium leading-tight">{a.name}</p>
-                  <p className="text-[10px] opacity-80 mt-0.5">{a.cityName}, {a.cityCountry}</p>
+        {/* Card grid + map (stack on mobile) */}
+        <div className="flex flex-col lg:flex-row items-start gap-10 lg:gap-12">
+          {/* Cards */}
+          <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8 max-w-full lg:max-w-[820px]">
+            {filtered.slice(0,12).map((a,i) => (
+              <Link
+                href={`/attractions/${a.id}`}
+                key={a.id}
+                className={`group rounded-[18px] overflow-hidden bg-white relative shadow-sm border border-[#E6E6E6] focus:outline-none focus-visible:ring-2 ring-offset-2 ring-[#4A5D52]/40 transition ${i===0? 'sm:col-span-2':'"'}`}
+              >
+                <div className={`relative w-full ${i===0? 'h-72 md:h-[420px]':'h-56 sm:h-60 md:h-72'}`}>
+                  <Image
+                    src={a.image}
+                    alt={a.name}
+                    fill
+                    sizes="(max-width:640px) 100vw, (max-width:1024px) 50vw, 33vw"
+                    className="object-cover group-hover:scale-[1.05] transition-transform duration-500"
+                    loading={i<4? 'eager':'lazy'}
+                  />
+                </div>
+                <div className="absolute left-0 right-0 bottom-0 px-4 py-4 bg-gradient-to-t from-black/70 via-black/40 to-transparent text-white">
+                  <p className="text-[13px] font-medium leading-tight line-clamp-2 pr-6">{a.name}</p>
+                  <p className="text-[11px] opacity-85 mt-1">{a.cityName}, {a.cityCountry}</p>
                 </div>
               </Link>
             ))}
+            {filtered.length===0 && (
+              <div className="col-span-full text-center py-20 text-sm text-gray-500">No attractions found.</div>
+            )}
           </div>
-          {/* Right Map */}
-          <div className="w-[560px] hidden xl:block sticky top-20">
-            <div className="rounded-[18px] border border-[#E6E6E6] bg-white p-1 h-[1250px] relative overflow-hidden">
+          {/* Map (shows from lg upward) */}
+          <div className="w-full lg:w-[420px] xl:w-[520px] hidden lg:block lg:sticky lg:top-24">
+            <div className="rounded-[22px] border border-[#E6E6E6] bg-white p-1 h-[600px] xl:h-[880px] relative overflow-hidden">
               <Image src="/images/attraction-google-img.svg" alt="Map" fill className="object-cover" />
-              {filtered.slice(0,8).map((a,i)=>(
-                <div key={a.id} style={{top: `${12 + i*11}%`, left: `${65 + (i%2)*12}%`}} className="absolute -translate-x-1/2 -translate-y-1/2">
+              {filtered.slice(0,10).map((a,i)=>(
+                <div key={a.id} style={{top: `${10 + i*8}%`, left: `${60 + (i%2)*14}%`}} className="absolute -translate-x-1/2 -translate-y-1/2">
                   <div className="bg-white rounded-md shadow px-2 py-1 flex items-center gap-2 border border-gray-200">
                     <div className="relative w-7 h-7 rounded-sm overflow-hidden">
                       <Image src={a.image} alt={a.name} fill className="object-cover" />
                     </div>
-                    <span className="text-[11px] font-medium text-gray-700 whitespace-nowrap">{a.name}</span>
+                    <span className="text-[11px] font-medium text-gray-700 whitespace-nowrap max-w-[120px] truncate">{a.name}</span>
                   </div>
                 </div>
               ))}

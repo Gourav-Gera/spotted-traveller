@@ -29,7 +29,7 @@ export default function AttractionDetail(){
           <div className="md:col-span-6 flex gap-4">
             <div className="flex md:flex-col gap-3 order-2 md:order-1">
               {data.images.map((img,i)=>(
-                <button key={img+i} onClick={()=>setActive(img)} className={`relative w-16 h-16 rounded-md overflow-hidden border ${active===img? 'ring-2 ring-[#3E5F55] border-transparent':'border-gray-200 hover:border-[#3E5F55]'}`}> 
+                <button key={img+i} onClick={()=>setActive(img)} className={`relative w-16 h-16 rounded-md overflow-hidden border ${active===img? 'ring-2 ring-[#4A5D52] border-transparent':'border-gray-200 hover:border-[#4A5D52]'}`}> 
                   <Image src={img} alt={data.name} fill className="object-cover" />
                 </button>
               ))}
@@ -113,7 +113,7 @@ function ReviewsSlider(){
         </div>
         <div className="flex items-center justify-center gap-2 mt-6">
           {Array.from({length:pages}).map((_,i)=> (
-            <button key={i} onClick={()=>setIndex(i)} className={`w-3 h-3 rounded-full ${i===index? 'bg-[#3E5F55]':'bg-gray-300 hover:bg-gray-400'} transition`}/>
+            <button key={i} onClick={()=>setIndex(i)} className={`w-3 h-3 rounded-full ${i===index? 'bg-[#4A5D52]':'bg-gray-300 hover:bg-gray-400'} transition`}/>
           ))}
         </div>
       </div>

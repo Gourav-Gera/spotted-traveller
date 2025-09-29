@@ -10,17 +10,17 @@ export default function OrderSummary(){
   return (
     <div className="min-h-screen flex flex-col bg-white">
       <MainHeader />
-      <main className="flex-1 max-w-[1200px] mx-auto w-full px-6 pt-10 pb-24">
-        <h1 className="text-[22px] font-semibold mb-10">Order Summary</h1>
+  <main className="flex-1 max-w-[1400px] mx-auto w-full px-5 sm:px-8 lg:px-10 pt-8 sm:pt-10 pb-20 sm:pb-24">
+    <h1 className="text-[24px] font-semibold mb-10">Order Summary</h1>
         <div className="grid md:grid-cols-12 gap-10 items-start">
           <div className="md:col-span-8 space-y-8">
-            <div className="bg-white rounded-xl border border-gray-200 p-6 text-[12px]">
+            <div className="bg-white rounded-xl border border-gray-200 p-6 text-[13px]">
               <div className="flex items-center justify-between">
                 <div>
                   <p className="font-semibold mb-1">Delivery Address</p>
                   <p className="text-gray-600 leading-snug">John Doe, (919) 471-0296, 7723 Guess Rd, Hillsborough, North Carolina, 27278</p>
                 </div>
-                <button className="text-[11px] underline">Edit</button>
+                <button className="text-[12px] underline">Edit</button>
               </div>
             </div>
             {items.map(p=> (
@@ -29,19 +29,19 @@ export default function OrderSummary(){
                   <Image src={p.image} alt={p.title} fill className="object-cover" />
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-[12px] font-semibold mb-1">{p.title}</h3>
-                  <p className="text-[11px] text-gray-500 line-clamp-2 max-w-md">Suspendisse potenti. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer id feugiat libero.</p>
-                  <p className="text-[12px] font-semibold mt-2">${p.price}</p>
+                  <h3 className="text-[13px] font-semibold mb-1">{p.title}</h3>
+                  <p className="text-[12px] text-gray-500 line-clamp-2 max-w-md">Suspendisse potenti. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer id feugiat libero.</p>
+                  <p className="text-[13px] font-semibold mt-2">${p.price}</p>
                 </div>
                 <div className="flex items-center bg-white rounded-full border border-gray-300 overflow-hidden">
-                  <button className="w-10 h-10 text-sm">−</button>
-                  <span className="w-10 text-center text-xs">1</span>
-                  <button className="w-10 h-10 text-sm">+</button>
+                  <button className="w-11 h-11 text-base">−</button>
+                  <span className="w-10 text-center text-[13px]">1</span>
+                  <button className="w-11 h-11 text-base">+</button>
                 </div>
               </div>
             ))}
             <div className="pt-4">
-              <Link href="/ecommerce/order/success" className="inline-flex justify-center items-center h-11 px-10 rounded-full bg-[#3E5F55] text-white text-[12px]">Proceed to Payment</Link>
+              <Link href="/ecommerce/order/success" className="inline-flex justify-center items-center h-12 px-12 rounded-full bg-[#4A5D52] text-white text-[13px]">Proceed to Payment</Link>
             </div>
           </div>
           <div className="md:col-span-4">

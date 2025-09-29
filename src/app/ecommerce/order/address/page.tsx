@@ -26,7 +26,7 @@ export default function AddressModalPage(){
               <input placeholder="City" className="flex-1 h-11 rounded-full border border-gray-300 px-5 text-[12px] outline-none" />
               <input placeholder="Zip Code" className="flex-1 h-11 rounded-full border border-gray-300 px-5 text-[12px] outline-none" />
             </div>
-            <button className="w-full h-11 rounded-full bg-[#3E5F55] text-white text-[12px]">Proceed to Checkout</button>
+            <button className="w-full h-11 rounded-full bg-[#4A5D52] text-white text-[12px]">Proceed to Checkout</button>
           </form>
         </div>
       )}

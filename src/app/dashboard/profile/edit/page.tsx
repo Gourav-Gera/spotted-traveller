@@ -58,7 +58,7 @@ export default function EditProfilePage(){
           <label className="block text-[13px] tracking-wide font-semibold mb-2">Email</label>
           <input value={email} onChange={e=>setEmail(e.target.value)} className="w-full rounded-full bg-white border border-gray-200 px-6 py-3.5 text-base focus:outline-none" />
         </div>
-        <button disabled={saving} className="w-full rounded-full bg-[#3D4F45] text-white text-base py-4 font-medium disabled:opacity-50">{saving? 'Saving...' : 'Save Changes'}</button>
+  <button disabled={saving} className="w-full rounded-full bg-[#4A5D52] text-white text-base py-4 font-medium disabled:opacity-50">{saving? 'Saving...' : 'Save Changes'}</button>
       </form>
     </div>
   );

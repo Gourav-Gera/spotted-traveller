@@ -27,11 +27,11 @@ export default function CitiesLandingPage(){
 
       <main className="max-w-7xl w-full mx-auto md:px-0 pt-8 pb-24">
         {/* Header row: title left, search right */}
-        <div className="mb-10 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-          <h1 className="text-[28px] md:text-[32px] font-semibold tracking-tight text-[#222]">Explore Cities</h1>
-          <div className="flex items-center gap-2 w-full md:w-[540px] lg:w-[620px] bg-white rounded-full px-5 py-3 border border-[#E5E5E5] shadow-sm">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-gray-400"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-            <input value={query} onChange={e=>setQuery(e.target.value)} placeholder="Search by city name..." className="flex-1 outline-none text-sm bg-transparent placeholder:text-gray-400" />
+        <div className="mb-12 flex flex-col md:flex-row md:items-center md:justify-between gap-5 px-5 md:px-8">
+          <h1 className="text-[34px] md:text-[40px] font-semibold tracking-tight text-[#171A1C] leading-tight">Explore Cities</h1>
+          <div className="flex items-center gap-3 w-full md:w-[560px] lg:w-[640px] bg-white rounded-full pl-6 pr-4 py-3.5 border border-[#DADDE0] shadow-[0_4px_14px_-4px_rgba(10,20,20,0.08)]">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-gray-400"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+            <input value={query} onChange={e=>setQuery(e.target.value)} placeholder="Search by city name..." className="flex-1 outline-none text-[15px] bg-transparent placeholder:text-gray-400" />
           </div>
         </div>
 
@@ -50,16 +50,16 @@ export default function CitiesLandingPage(){
                 <div
                   className={`md:absolute md:top-1/2 md:-translate-y-1/2 ${reversed ? 'md:left-8' : 'md:right-8'} md:w-[50%]`}
                 >
-                  <div className="mt-4 md:mt-0 bg-white border border-[#E7EAEE] rounded-[18px] shadow-[0_14px_40px_-10px_rgba(2,6,23,0.15)] p-5 md:p-7">
-                    <div className="flex items-center gap-3 mb-3">
-                      <span className="inline-block w-10 h-10 md:w-11 md:h-11 rounded-[10px] bg-[#3E5F55]" aria-hidden="true" />
-                      <h2 className="text-[18px] md:text-[20px] font-semibold text-[#101828]">{c.name}</h2>
+                  <div className="mt-4 md:mt-0 bg-white border border-[#E1E4E8] rounded-[22px] shadow-[0_16px_50px_-12px_rgba(15,23,42,0.18)] p-6 md:p-8">
+                    <div className="flex items-center gap-4 mb-4">
+                      <span className="inline-block w-12 h-12 md:w-14 md:h-14 rounded-[14px] bg-[#4A5D52]" aria-hidden="true" />
+                      <h2 className="text-[20px] md:text-[24px] font-semibold text-[#0F141A] tracking-tight">{c.name}</h2>
                     </div>
-                    <p className="text-[13px] md:text-[14px] leading-relaxed text-[#667085] mb-4 md:mb-5 line-clamp-3">{c.description}</p>
+                    <p className="text-[14px] md:text-[15px] leading-relaxed text-[#5D6B74] mb-6 line-clamp-3">{c.description}</p>
                     <div>
                       <Link
                         href={`/cities/${c.slug}`}
-                        className="inline-flex items-center gap-2 rounded-full border border-[#D0D5DD] px-4 md:px-5 py-2.5 text-sm font-medium text-[#101828] hover:bg-gray-50 transition-colors"
+                        className="inline-flex items-center gap-2 rounded-full border border-[#C5CBD1] px-6 py-3 text-[13px] md:text-[14px] font-medium text-[#0F141A] hover:bg-gray-50 hover:border-[#B5BBC1] transition-colors"
                       >
                         Explore {c.name}
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="w-4 h-4"><path d="M9 18l6-6-6-6" strokeLinecap="round" strokeLinejoin="round" /></svg>

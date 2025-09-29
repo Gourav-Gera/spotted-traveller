@@ -23,7 +23,7 @@ export default function CityMediaGallery({ images, alt }: Props) {
               aria-label={`Show image ${i + 1}`}
               onClick={() => setActive(i)}
               className={`relative w-[72px] h-[72px] rounded-[10px] overflow-hidden border transition-shadow ${
-                selected ? "ring-2 ring-[#3E5F55]" : "border-gray-200 hover:shadow"
+                selected ? "ring-2 ring-[#4A5D52]" : "border-gray-200 hover:shadow"
               }`}
             >
               <Image src={src} alt="" fill className="object-cover" />

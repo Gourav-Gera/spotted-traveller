@@ -35,7 +35,7 @@ export default function ContactPage(){
           <textarea value={message} onChange={e=>setMessage(e.target.value)} placeholder="Write here..." rows={5} className="w-full placeholder:text-gray-400 rounded-3xl bg-white border border-[#E5E5E5] px-6 py-4 text-base focus:outline-none resize-none" />
         </div>
         {sent && <div className="text-sm text-green-600">Message sent.</div>}
-        <button disabled={sending} className="w-full rounded-full bg-[#3D4F45] text-white text-base py-4 font-medium disabled:opacity-60">{sending? 'Sending...' : 'Submit Details'}</button>
+  <button disabled={sending} className="w-full rounded-full bg-[#4A5D52] text-white text-base py-4 font-medium disabled:opacity-60">{sending? 'Sending...' : 'Submit Details'}</button>
       </form>
     </div>
   );
