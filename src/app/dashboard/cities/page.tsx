@@ -105,11 +105,11 @@ export default function CitiesPage() {
             <div className="flex items-center gap-4 w-full flex-wrap">
                 <div className="flex-1">
                 <div className="hidden sm:flex items-center gap-3 bg-white rounded-full px-4 py-3 border border-[#E5E5E5] ">
-                  <svg width="18" height="18" viewBox="0 0 24 24" className="text-[#525252]">
+                  <svg width="18" height="18" viewBox="0 0 24 24" className="text-desc">
                     <path d="M21 21l-4.35-4.35" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none" />
                     <circle cx="11" cy="11" r="6" stroke="currentColor" strokeWidth="2" fill="none" />
                   </svg>
-                  <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="Search by city name..." className="w-full text-sm bg-transparent placeholder:text-[#525252] outline-none" />
+                  <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="Search by city name..." className="w-full text-sm bg-transparent placeholder-desc outline-none" />
                 </div>
               </div>
 

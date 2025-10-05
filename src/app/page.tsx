@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import Header from "../components/Header";
+import MainHeader from "../components/MainHeader";
 import Footer from "../components/Footer";
 import CityExplorer from "../components/CityExplorer";
 import WorldAttractions from "../components/WorldAttractions";
@@ -10,10 +10,10 @@ import TestimonialsSlider from "../components/TestimonialsSlider";
 export default function Home() {
   return (
     <div className="bg-white min-h-screen flex flex-col items-center">
-      <Header />
+  <MainHeader />
       {/* HERO (Full banner with centered overlay) */}
-      <section className="w-full px-4 mt-6">
-        <div className="max-w-7xl mx-auto relative rounded-[28px] overflow-hidden h-[380px] md:h-[540px]">
+    <section className="app-container  w-full mt-4">
+  <div className="relative rounded-[28px] overflow-hidden h-[380px] md:h-[540px]">
           <Image
             src="/images/home-img.png"
             alt="Sunset over Italian city"
@@ -23,13 +23,13 @@ export default function Home() {
           />
           <div className="absolute inset-0 bg-black/15" />
           <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6">
-            <h1 className="text-3xl md:text-5xl font-medium tracking-tight text-white mb-6 leading-snug max-w-3xl">
+            <h1 className="text-3xl md:text-5xl font-normal tracking-tight text-white mb-6 leading-snug max-w-3xl">
               Uncover timeless beauty <br className="hidden md:block" /> in <span className="font-semibold">Italy.</span>
             </h1>
             <p className="text-sm md:text-base text-gray-200 leading-relaxed max-w-xl mb-8">
               In quis eleifend mi. Ut tincidunt bibendum mattis. Quisque ultrices nulla pharetra risus feugiat, eget pellentesque erat vulputate.
             </p>
-            <Link href="/cities" className="bg-[#4A5D52] hover:bg-[#4A5D52] text-white rounded-full px-7 py-2.5 text-sm font-medium transition-colors shadow-md">
+            <Link href="/cities" className="bg-accent text-white rounded-full px-7 py-2.5 text-sm font-medium transition-colors shadow-md">
               Get Started Now <Image src="/images/arrow-right-icon.svg" alt="Arrow Right Icon" width={16} height={16} className="inline-block ml-2 align-middle" />
             </Link>
           </div>
@@ -40,26 +40,26 @@ export default function Home() {
       <CityExplorer />
 
       {/* ACCOMMODATIONS */}
-      <section className="w-full px-4 mt-16">
-        <div className="max-w-7xl mx-auto">
+    <section className="w-full mt-16">
+  <div className="app-container">
           <h2 className="text-4xl tracking-wide text-black-heading font-semibold mb-4">Famous Accommodation</h2>
-          <p className="max-w-xl mb-8">Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit</p>
+          <p className="max-w-xl mb-8 text-desc">Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit</p>
           <div className="grid gap-6 md:grid-cols-4">
             {[1,2,3,4].map(i=> (
               <div key={i} className="border border-gray-200 rounded-xl overflow-hidden bg-white hover:shadow-sm transition">
-                <div className="relative h-36 bg-gray-100">
+                <div className="relative h-56 bg-gray-100">
                   <Image src="/images/hotel-thumb-image.png" alt="Hotel" fill className="object-cover" />
                 </div>
                 <div className="p-4 flex flex-col gap-2">
                   <div>
                     <h3 className="font-semibold text-sm mb-1">Coastal View Hotel</h3>
-                    <p className="text-xs text-gray-600 leading-relaxed">Aenean non ante at metus mollis tempor. Vestibulum ante ipsum primis in faucibus orci luctus.</p>
+                    <p className="text-sm text-gray-600 leading-relaxed">Aenean non ante at metus mollis tempor. Vestibulum ante ipsum primis in faucibus orci luctus.</p>
                   </div>
-                  <div className="flex items-center gap-1 text-[11px] text-gray-500">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-gray-400"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 1 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-                    <span>Florence, Italy</span>
+                  <div className="flex items-center gap-2 text-[14px] text-black-heading">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-black-heading"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 1 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                    <span className="text-black-heading">Florence, Italy</span>
                   </div>
-                  <div className="mt-1 text-[12px] font-semibold text-gray-800">$100 <span className="font-normal text-gray-500">/ night</span></div>
+                  <div className="mt-1 text-[14px] font-semibold text-primary">$100<span className="font-medium text-primary">/night</span></div>
                 </div>
               </div>
             ))}
@@ -68,8 +68,8 @@ export default function Home() {
       </section>
 
       {/* ATTRACTIONS MAP */}
-      <section className="w-full px-4 mt-16">
-        <div className="max-w-7xl mx-auto">
+    <section className="w-full mt-16">
+  <div className="app-container">
           <WorldAttractions />
         </div>
       </section>

@@ -16,7 +16,7 @@ const cities: CityInfo[] = [
     region: "Lazio, Italy",
     description:
       "Historic capital featuring ancient ruins, vibrant piazzas and timeless culture.",
-    image: "/images/rome-city-image-1.png",
+    image: "/images/city-img.svg",
     tags: ["Historic", "Culture", "Food", "Local Visit"],
   },
   {
@@ -32,7 +32,7 @@ const cities: CityInfo[] = [
     region: "Liguria, Italy",
     description:
       "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.",
-    image: "/images/rome-city-image-3.png",
+    image: "/images/city-img.svg",
     tags: [
       "Public Transportations",
       "Nature & Adventure",
@@ -92,18 +92,18 @@ export default function CityExplorer() {
   const tagIconMap: Record<string, string> = {
     "Public Transportations": "/images/public-transport-icon.svg",
     "Nature & Adventure": "/images/nature-advanture-icon.svg",
-    "Private Transportations": "/images/public-transport-icon.svg", // closest available
+    "Private Transportations": "/images/private-transporation-img.svg", // closest available
     "Business Tours": "/images/business-tour-icon.svg",
     "Local Visit": "/images/local-visit-icon.svg",
   };
 
   return (
-    <section className="w-full px-4 mt-16">
-      	<div className="max-w-7xl mx-auto bg-[#F7F5EF] rounded-2xl px-6 md:px-10 pt-12 pb-16 relative">
+    <section className="app-container w-full px-4 mt-16">
+        <div className="bg-[#F7F5EF] rounded-2xl px-6 md:px-16 pt-12 pb-16 relative">
 			<h2 className="text-center text-[24px] md:text-[30px] font-semibold text-[#41444B] mb-3">
 				Explore Popular Cities
 			</h2>
-			<p className="text-center text-[16px] text-[#525252] max-w-2xl mx-auto mb-8 leading-relaxed">
+      <p className="text-center text-[16px] text-desc max-w-2xl mx-auto mb-8 leading-relaxed">
 				Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit
 			</p>
 			<div
@@ -121,9 +121,9 @@ export default function CityExplorer() {
 					aria-controls={`panel-${c.name}`}
 					id={`tab-${c.name}`}
 					onClick={() => setActive(c.name)}
-					className={`h-10 px-10 rounded-full border transition focus:outline-none focus-visible:ring-2 ring-offset-2 ring-[#3F4C43]/50 border-gray-300 text-gray-700 hover:bg-transparent ${
+					className={`h-10 px-10 rounded-full border transition focus:outline-none focus-visible:ring-2 ring-offset-2 ring-[#3F4C43]/50 text-desc hover:bg-transparent ${
 					selected
-						? "bg-[#3F4C43] text-white border-[#3F4C43] shadow"
+						? "bg-[#3F4C43] text-color-white border-[#3F4C43] shadow"
 						: "bg-transparent"
 					}`}
 				>
@@ -152,16 +152,16 @@ export default function CityExplorer() {
 			{/* Overlapping Info Card */}
         	<div className="md:w-[40%] relative">
 					<div className="md:absolute md:-left-24 lg:-left-32 top-10 bg-white rounded-3xl p-8 w-full md:w-[520px] shadow-[0_4px_20px_-4px_rgba(0,0,0,0.08)] border border-gray-100">
-									<h3 className="font-semibold text-lg mb-1 tracking-tight">{city.name}</h3>
-									<p className="text-[11px] uppercase tracking-wider text-gray-400 mb-4">{city.region}</p>
-									<p className="text-[13px] text-gray-600 leading-relaxed mb-6 pr-2">{city.description}</p>
-									<div className="flex flex-wrap gap-4">
+									<h3 className="font-semibold text-2xl mb-2 tracking-tight">{city.name}</h3>
+									{/* <p className="text-[11px] uppercase tracking-wider text-gray-400 mb-4">{city.region}</p> */}
+									<p className="text-[15px] text-gray-600 leading-relaxed mb-6 pr-2">{city.description}</p>
+									<div className="flex flex-wrap gap-3">
 						{city.tags.map((t) => {
 							const icon = tagIconMap[t];
 							return (
 							<span
 								key={t}
-								className="inline-flex items-center gap-3 text-[12px] font-medium bg-[#8B3F09] text-white pl-3 pr-4 py-2 rounded-full shadow-sm"
+								className="inline-flex items-center gap-2 text-[13px] font-medium bg-[#8B3F09] text-white pl-3 pr-4 py-2 rounded-full shadow-sm"
 							>
 								{icon && (
 								<span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-white/15 shadow-sm">

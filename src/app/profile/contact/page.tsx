@@ -1,5 +1,5 @@
 import MainHeader from '../../../components/MainHeader';
-import MainFooter from '../../../components/MainFooter';
+import Footer from '../../../components/Footer';
 import ContactPage from '../../dashboard/profile/contact/page';
 
 export default function PublicContact(){
@@ -12,7 +12,7 @@ export default function PublicContact(){
           <ContactPage />
         </div>
       </main>
-      <MainFooter />
+  <Footer />
     </div>
   );
 }

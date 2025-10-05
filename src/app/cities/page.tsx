@@ -3,7 +3,7 @@ import React, { useState, useMemo } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import MainHeader from '../../components/MainHeader';
-import MainFooter from '../../components/MainFooter';
+import Footer from '../../components/Footer';
 import { cities as CITY_LIST } from '../../data/cities';
 
 // derive thumb from hero image or first gallery item
@@ -25,7 +25,7 @@ export default function CitiesLandingPage(){
     <div className="min-h-screen bg-[#F2F2F2] flex flex-col">
       <MainHeader />
 
-      <main className="max-w-7xl w-full mx-auto md:px-0 pt-8 pb-24">
+  <main className="app-container w-full md:px-0 pt-8 pb-24">
         {/* Header row: title left, search right */}
         <div className="mb-12 flex flex-col md:flex-row md:items-center md:justify-between gap-5 px-5 md:px-8">
           <h1 className="text-[34px] md:text-[40px] font-semibold tracking-tight text-[#171A1C] leading-tight">Explore Cities</h1>
@@ -77,7 +77,7 @@ export default function CitiesLandingPage(){
         </div>
       </main>
 
-      <MainFooter />
+  <Footer />
     </div>
   );
 }

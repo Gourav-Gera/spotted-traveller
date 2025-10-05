@@ -1,6 +1,6 @@
 "use client";
 import MainHeader from '../../../components/MainHeader';
-import MainFooter from '../../../components/MainFooter';
+import Footer from '../../../components/Footer';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useState } from 'react';
 
@@ -23,10 +23,10 @@ export default function CancelPublicBooking(){
             <option>Found better option</option>
           </select>
           <textarea value={notes} onChange={e=>setNotes(e.target.value)} placeholder="Explain us here..." className="w-full h-40 rounded-2xl border border-gray-300 p-5 text-[12px] outline-none resize-none" />
-          <button className="w-full h-11 rounded-full bg-[#44564A] text-white text-[13px]">Submit</button>
+          <button className="w-full h-11 rounded-full bg-[var(--color-accent-primary)] text-white text-[13px]">Submit</button>
         </form>
       </main>
-      <MainFooter />
+  <Footer />
     </div>
   );
 }

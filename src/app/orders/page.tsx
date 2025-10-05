@@ -1,6 +1,6 @@
 "use client";
 import MainHeader from '../../components/MainHeader';
-import MainFooter from '../../components/MainFooter';
+import Footer from '../../components/Footer';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState, useMemo } from 'react';
@@ -19,11 +19,11 @@ export default function PublicOrdersPage(){
   return (
     <div className="min-h-screen flex flex-col bg-white">
       <MainHeader />
-  <main className="flex-1 max-w-[1400px] mx-auto w-full px-5 sm:px-8 lg:px-10 pt-12 sm:pt-14 pb-24 sm:pb-28 text-[13px]">
+  <main className="flex-1 app-container w-full px-5 sm:px-8 lg:px-10 pt-12 sm:pt-14 pb-24 sm:pb-28 text-[13px]">
         <h1 className="text-[24px] font-semibold mb-6">Your Orders</h1>
         <div className="w-full rounded-full border border-[#E5E5E5] flex mb-8 overflow-hidden text-[12px]">
           {tabs.map(t=> (
-            <button key={t.key} onClick={()=>setTab(t.key)} className={`flex-1 h-11 rounded-full transition text-center ${t.key===tab? 'bg-[#44564A] text-white font-medium':'text-gray-600'}`}>{t.label}</button>
+            <button key={t.key} onClick={()=>setTab(t.key)} className={`flex-1 h-11 rounded-full transition text-center ${t.key===tab? 'bg-[var(--color-accent-primary)] text-white font-medium':'text-gray-600'}`}>{t.label}</button>
           ))}
         </div>
         <div>
@@ -46,7 +46,7 @@ export default function PublicOrdersPage(){
           {filtered.length===0 && <div className="text-[12px] text-gray-500 py-10">No orders found.</div>}
         </div>
       </main>
-      <MainFooter />
+  <Footer />
     </div>
   );
 }

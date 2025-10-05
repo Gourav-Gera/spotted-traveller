@@ -1,5 +1,5 @@
 import MainHeader from '../../../components/MainHeader';
-import MainFooter from '../../../components/MainFooter';
+import Footer from '../../../components/Footer';
 import ChangePasswordPage from '../../dashboard/profile/change-password/page';
 
 export default function PublicChangePassword(){
@@ -12,7 +12,7 @@ export default function PublicChangePassword(){
           <ChangePasswordPage />
         </div>
       </main>
-      <MainFooter />
+  <Footer />
     </div>
   );
 }

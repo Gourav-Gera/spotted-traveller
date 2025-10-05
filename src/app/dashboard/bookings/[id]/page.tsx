@@ -50,9 +50,9 @@ export default function BookingDetail({ params }: Props) {
         <div className="bg-white rounded-xl shadow-sm border border-[#E5E7EB] px-5 sm:px-8 py-6 h-fit">
           <h3 className="font-bold text-md mb-4">Price breakdown</h3>
             <ul className="space-y-1">
-              <li className="flex justify-between text-sm py-1 text-[#060608]"><span>$100 * 1 night</span><span className="font-semibold">$100</span></li>
-              <li className="flex justify-between text-sm py-1 text-[#060608]"><span>Services fee</span><span className="font-semibold">$10</span></li>
-              <li className="flex justify-between text-sm py-1 mb-2 text-[#060608]"><span>Taxes</span><span className="font-semibold">$10</span></li>
+              <li className="flex justify-between text-sm py-1 text-[var(--color-text-body)]"><span>$100 * 1 night</span><span className="font-semibold">$100</span></li>
+              <li className="flex justify-between text-sm py-1 text-[var(--color-text-body)]"><span>Services fee</span><span className="font-semibold">$10</span></li>
+              <li className="flex justify-between text-sm py-1 mb-2 text-[var(--color-text-body)]"><span>Taxes</span><span className="font-semibold">$10</span></li>
               <li className="flex justify-between text-sm font-semibold pt-3 mt-1 border-t border-[#E5E7EB]"><span>Grand Total</span><span>$120</span></li>
               <li className="flex justify-between text-sm py-1"><span>Platform fee</span><span className="font-semibold text-[#B3541E]">- $20</span></li>
               <li className="flex justify-between text-sm font-semibold pt-2 mt-1 border-t border-[#E5E7EB]"><span>Your Earning</span><span>$100</span></li>

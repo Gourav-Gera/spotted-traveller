@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { useRouter, useParams } from 'next/navigation';
 import MainHeader from '../../../components/MainHeader';
-import MainFooter from '../../../components/MainFooter';
+import Footer from '../../../components/Footer';
 import Image from 'next/image';
 import Link from 'next/link';
 import { events, cities } from '../../../data/cities';
@@ -52,71 +52,68 @@ export default function EventDetailPage(){
     <div className="min-h-screen flex flex-col bg-white">
       <MainHeader />
       <main className="flex-1 flex items-center justify-center p-20 text-sm text-gray-500">Event not found.</main>
-      <MainFooter />
+  <Footer />
     </div>
   );
 
   return (
     <div className="min-h-screen flex flex-col bg-[#F4F5F4]">
       <MainHeader />
-      <main className="flex-1 max-w-7xl mx-auto w-full pt-10 pb-24">
+  <main className="flex-1 app-container w-full pt-8 md:pt-10 pb-20 md:pb-24">
         {/* Top layout: thumbs + main image + text */}
-        <div className="grid md:grid-cols-12 gap-8 items-start">
-          {/* Thumbnails + main image */}
-          <div className="md:col-span-6 flex gap-4">
-            <div className="flex md:flex-col gap-3 order-2 md:order-1">
+        <div className="grid md:grid-cols-12 gap-6 md:gap-8 items-start">
+          {/* Media section */}
+          <div className="md:col-span-6 flex flex-col md:flex-row gap-4">
+            <div className="relative w-full h-[240px] sm:h-[280px] md:h-[340px] rounded-xl overflow-hidden shadow-sm order-1 md:order-2">
+              {active && <Image src={active} alt={event.title} fill className="object-cover" />}
+            </div>
+            <div className="flex md:flex-col gap-3 order-2 md:order-1 overflow-x-auto md:overflow-visible mt-4 md:mt-0 -mx-1 px-1">
               {event.images.map((img,i)=>(
-                <button key={img+i} onClick={()=>setActive(img)} className={`relative w-16 h-16 rounded-md overflow-hidden border ${active===img? 'ring-2 ring-[#3E5F55] border-transparent':'border-gray-200 hover:border-[#3E5F55]'}`}> 
-                  <Image src={img} alt="thumb" fill className="object-cover" />
+                <button key={img+i} onClick={()=>setActive(img)} aria-label={`Select image ${i+1}`} className={`relative flex-shrink-0 w-16 h-16 rounded-md overflow-hidden border transition focus:outline-none ${active===img? 'ring-2 ring-[#3E5F55] border-transparent':'border-gray-200 hover:border-[#3E5F55]'}`}>
+                  <Image src={img} alt="thumbnail" fill className="object-cover" />
                 </button>
               ))}
             </div>
-            <div className="relative flex-1 h-[300px] md:h-[340px] rounded-xl overflow-hidden shadow-sm order-1 md:order-2">
-              {active && <Image src={active} alt={event.title} fill className="object-cover" />}
-            </div>
           </div>
           {/* Text content */}
-            <div className="md:col-span-6">
-              <h1 className="text-2xl md:text-3xl font-semibold tracking-tight mb-4">{event.title}</h1>
-              <div className="prose prose-sm max-w-none text-[13px] leading-relaxed text-gray-700 whitespace-pre-line">
-                {event.longDescription}
-              </div>
+          <div className="md:col-span-6">
+            <h1 className="text-xl sm:text-2xl md:text-3xl font-semibold tracking-tight mb-4 md:mb-5 leading-snug">{event.title}</h1>
+            <div className="text-[13px] sm:text-[14px] leading-relaxed text-desc whitespace-pre-line">
+              {event.longDescription}
             </div>
+          </div>
         </div>
 
         {/* Info + map row */}
-        <div className="grid md:grid-cols-12 gap-6 mt-12">
-          <div className="md:col-span-4">
-            <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
-              <h2 className="text-md font-semibold mb-5">Important things to remember</h2>
-              <dl className="space-y-4 text-[12px]">
+        <div className="grid md:grid-cols-12 gap-6 md:gap-8 mt-10 md:mt-12">
+          <div className="md:col-span-4 order-2 md:order-1">
+            <div className="bg-white rounded-xl p-5 md:p-6 box-shadow-sm border border-gray-100">
+              <h2 className="text-[15px] font-semibold mb-5 text-black">Important things to remember</h2>
+              <dl className="space-y-4 text-[11px] sm:text-[12px]">
                 <div className="flex items-start justify-between gap-4">
-                  <dt className="text-[#060608]">Event Entry</dt>
-                  <dd className="font-semibold text-md text-gray-800">{event.price}</dd>
+                  <dt className="text-black">Event Entry</dt>
+                  <dd className="font-semibold text-md text-black">{event.price}</dd>
                 </div>
                 <div className="flex items-start justify-between gap-4">
-                  <dt className="text-[#060608]">Date</dt>
-                  <dd className="font-semibold text-md text-gray-800">{new Date(event.date).toLocaleDateString(undefined,{ month:'long', day:'numeric', year:'numeric'})}</dd>
+                  <dt className="text-black">Date</dt>
+                  <dd className="font-semibold text-md text-black">{new Date(event.date).toLocaleDateString(undefined,{ month:'long', day:'numeric', year:'numeric'})}</dd>
                 </div>
                 <div className="flex items-start justify-between gap-4">
-                  <dt className="text-[#060608]">Time Duration</dt>
-                  <dd className="font-semibold text-md text-gray-800">3 PM – 11 PM</dd>
+                  <dt className="text-black">Time Duration</dt>
+                  <dd className="font-semibold text-md text-black">3 PM – 11 PM</dd>
                 </div>
               </dl>
               {/* Buttons removed per updated design */}
             </div>
           </div>
-          <div className="md:col-span-8">
-            <div className="bg-white rounded-xl p-2 h-[240px] md:h-[260px] shadow-sm border border-gray-100 relative overflow-hidden">
-              <Image src="/images/map-google.png" alt="Map" fill className="object-cover opacity-90" />
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-10 h-10 rounded-full bg-[#8B3F09] text-white flex items-center justify-center text-[12px] font-semibold shadow-lg">★</div>
-              </div>
+          <div className="md:col-span-8 order-1 md:order-2">
+            <div className="bg-white rounded-xl p-1 md:p-2 h-[220px] sm:h-[260px] md:h-[180px] shadow-sm border border-gray-100 relative overflow-hidden">
+              <Image src="/images/google-map-images.png" alt="Map" fill className="object-cover opacity-90" />
             </div>
           </div>
         </div>
       </main>
-      <MainFooter />
+  <Footer />
     </div>
   );
 }

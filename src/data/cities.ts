@@ -59,7 +59,7 @@ export const attractions: Attraction[] = [
   { id:'att-4', city:'rome', name:'Trevi Fountain', image:'/images/attraction-img-4.png', blurb:'Baroque fountain legend.'},
   { id:'att-5', city:'rome', name:'Pantheon', image:'/images/attraction-img-5.png', blurb:'Temple turned church marvel.'},
   { id:'att-6', city:'genoa', name:'Old Port', image:'/images/attraction-img-6.png', blurb:'Revitalised waterfront.'},
-  { id:'att-7', city:'genoa', name:'Cathedral of Genoa', image:'/images/attraction-img-7.png', blurb:'Medieval cathedral & art.'},
+  { id:'att-7', city:'genoa', name:'Cathedral of Genoa', image:'/images/roman-forum-img.svg', blurb:'Medieval cathedral & art.'},
   { id:'att-8', city:'genoa', name:'Harbour Promenade', image:'/images/attraction-img-8.png', blurb:'Seaside views & cultural spots.'}
 ];
 

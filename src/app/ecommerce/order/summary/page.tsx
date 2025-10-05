@@ -1,5 +1,5 @@
 import MainHeader from '../../../../components/MainHeader';
-import MainFooter from '../../../../components/MainFooter';
+import Footer from '../../../../components/Footer';
 import { products } from '../../../../data/products';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -10,7 +10,7 @@ export default function OrderSummary(){
   return (
     <div className="min-h-screen flex flex-col bg-white">
       <MainHeader />
-  <main className="flex-1 max-w-[1400px] mx-auto w-full px-5 sm:px-8 lg:px-10 pt-8 sm:pt-10 pb-20 sm:pb-24">
+  <main className="flex-1 app-container w-full px-5 sm:px-8 lg:px-10 pt-8 sm:pt-10 pb-20 sm:pb-24">
     <h1 className="text-[24px] font-semibold mb-10">Order Summary</h1>
         <div className="grid md:grid-cols-12 gap-10 items-start">
           <div className="md:col-span-8 space-y-8">
@@ -57,7 +57,7 @@ export default function OrderSummary(){
           </div>
         </div>
       </main>
-      <MainFooter />
+  <Footer />
     </div>
   );
 }

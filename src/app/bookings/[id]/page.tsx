@@ -1,6 +1,6 @@
 "use client";
 import MainHeader from '../../../components/MainHeader';
-import MainFooter from '../../../components/MainFooter';
+import Footer from '../../../components/Footer';
 import { publicBookings, formatRange } from '../../../data/publicBookings';
 import { useParams } from 'next/navigation';
 import Image from 'next/image';
@@ -8,8 +8,13 @@ import Link from 'next/link';
 import { FiEdit2 } from 'react-icons/fi';
 
 function StatusBadge({status}:{status:string}){
-  const map:Record<string,string>={upcoming:'#E0B45B',ongoing:'#B46D2E',completed:'#44564A',cancelled:'#B4552E'};
-  return <span className="text-[10px] px-2 py-1 rounded-sm text-white" style={{background:map[status]||'#555'}}>{status.charAt(0).toUpperCase()+status.slice(1)}</span>;
+  const map:Record<string,string>={
+    upcoming:'var(--color-accent-secondary)', /* could define a tertiary if needed */
+    ongoing:'var(--color-accent-secondary)',
+    completed:'var(--color-accent-primary)',
+    cancelled:'var(--color-accent-secondary)'
+  };
+  return <span className="text-[10px] px-2 py-1 rounded-sm text-white" style={{background:map[status]||'var(--color-accent-primary)'}}>{status.charAt(0).toUpperCase()+status.slice(1)}</span>;
 }
 
 export default function PublicBookingDetail(){
@@ -19,7 +24,7 @@ export default function PublicBookingDetail(){
   return (
     <div className="min-h-screen flex flex-col bg-white">
       <MainHeader />
-  <main className="flex-1 max-w-[1400px] mx-auto w-full px-5 sm:px-8 lg:px-10 pt-12 sm:pt-14 pb-24 sm:pb-28 text-[13px]">
+  <main className="flex-1 app-container w-full px-5 sm:px-8 lg:px-10 pt-12 sm:pt-14 pb-24 sm:pb-28 text-[13px]">
         <h1 className="text-[24px] font-semibold mb-10">Booking Details</h1>
   <div className="grid md:grid-cols-[1fr_340px] gap-10 lg:gap-14 items-start">
           {/* Left Column */}
@@ -56,7 +61,7 @@ export default function PublicBookingDetail(){
                   <p className="font-semibold text-[12px] mb-1">Location</p>
                   <p className="text-[11px] text-gray-600">Rome, Italy</p>
                 </div>
-                <Link href="#map" className="text-[11px] font-medium text-[#44564A] underline underline-offset-2 pt-1">View on map</Link>
+                <Link href="#map" className="text-[11px] font-medium underline underline-offset-2 pt-1" style={{color:'var(--color-accent-primary)'}}>View on map</Link>
               </div>
               <div className="py-6">
                 <p className="font-semibold text-[12px] mb-2">Cancellation policy</p>
@@ -66,7 +71,7 @@ export default function PublicBookingDetail(){
             {/* Action Button */}
             <div className="pt-8 flex flex-wrap gap-4">
               {booking.status==='upcoming' && (
-                <Link href={`/bookings/cancel?id=${booking.id}`} className="inline-flex items-center justify-center h-11 px-8 sm:px-10 rounded-full bg-[#44564A] text-white text-[12px] min-w-[200px] w-full sm:w-auto">Cancel Booking</Link>
+                <Link href={`/bookings/cancel?id=${booking.id}`} className="inline-flex items-center justify-center h-11 px-8 sm:px-10 rounded-full text-white text-[12px] min-w-[200px] w-full sm:w-auto" style={{background:'var(--color-accent-primary)'}}>Cancel Booking</Link>
               )}
               {(booking.status==='completed' || booking.status==='cancelled' || booking.status==='ongoing') && (
                 <Link href="/bookings" className="inline-flex items-center justify-center h-11 px-8 sm:px-10 rounded-full border border-gray-400 text-[12px] min-w-[200px] w-full sm:w-auto">Book Again</Link>
@@ -88,7 +93,7 @@ export default function PublicBookingDetail(){
           </div>
         </div>
       </main>
-      <MainFooter />
+  <Footer />
     </div>
   );
 }

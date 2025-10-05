@@ -37,16 +37,39 @@
 }
 
 :root {
-  --background: #ffffff;
+  /* Core palette */
+  --color-bg-primary: #F4F1EA;
+  --color-text-body: #41444B; /* heading & primary body text */
+  --color-text-desc: #525252; /* description / secondary */
+  --color-accent-primary: #4A5D52;
+  --color-accent-secondary: #B3541E;
+  --color-border: #D3D3D3;
+  --color-black:#000;
+  --color-white:#fff;
+
+  /* Extended / legacy aliases (kept for incremental migration) */
+  --background: var(--color-bg-primary);
   --foreground: #171717;
   --gray: #525252;
-  --primary: #4A5D52;
+  --primary: var(--color-accent-primary);
   --black: #060608;
-  --black-heading: #41444B;
+  --black-heading: var(--color-text-body);
   --shadow-sm:0px 4px 16px rgba(0, 0, 0, 0.08);
-  /* primary font variable for easy reference in components/layouts */
   --font-gilroy: 'Gilroy', Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
 }
+/* Legacy support: map old hard-coded Tailwind arbitrary color utilities to tokens.
+   This allows a gradual refactor while ensuring only palette colors render. */
+.bg-\[\#44564A\]{background:var(--color-accent-primary)!important;}
+.text-\[\#44564A\]{color:var(--color-accent-primary)!important;}
+.border-\[\#44564A\]{border-color:var(--color-accent-primary)!important;}
+.bg-\[\#B46D2E\], .bg-\[\#B4552E\], .bg-\[\#8B3F09\]{background:var(--color-accent-secondary)!important;}
+.text-\[\#B46D2E\], .text-\[\#B4552E\], .text-\[\#8B3F09\]{color:var(--color-accent-secondary)!important;}
+.border-\[\#B46D2E\], .border-\[\#B4552E\], .border-\[\#8B3F09\]{border-color:var(--color-accent-secondary)!important;}
+.border-\[\#E5E5E5\], .border-\[\#D8D8D8\]{border-color:var(--color-border)!important;}
+.bg-\[\#E5E5E5\], .bg-\[\#D8D8D8\]{background:var(--color-border)!important;}
+
+/* Utility for focus ring matching primary accent */
+.focus-ring-accent:focus { outline:2px solid rgba(74,93,82,0.35); outline-offset:2px; }
 
 /* removed deprecated @theme block for compatibility */
 
@@ -56,48 +79,40 @@
     --foreground: #ededed;
   }
 }
-
 body {
-  background: var(--background);
-  color: var(--foreground);
-  /* Use the --font-gilroy variable so components can override easily */
+  background: var(--color-bg-primary);
+  color: var(--color-text-body);
   font-family: var(--font-gilroy);
 }
+/* Global layout container utility (centered, responsive gutters) */
+.app-container{max-width:1400px;margin-left:auto;margin-right:auto;width:100%;padding-left:1rem;padding-right:1rem;}
+@media (min-width:640px){.app-container{padding-left:1.5rem;padding-right:1.5rem;}}
+@media (min-width:1024px){.app-container{padding-left:2.5rem;padding-right:2.5rem;}}
 
-/* Remove browser default focus outlines for form controls (user request).
-   NOTE: This has accessibility impact; consider replacing with custom visible focus for keyboard users later. */
-input:focus, select:focus, textarea:focus {
-  outline: none !important;
-  box-shadow: none !important;
-}
-
-.text-gray-400{color: var(--gray);}
-.text-primary{color: var(--primary);}
-.text-black{color: var(--black);}
-.text-black-heading{color: var(--black-heading);}
-/* Small UI helper classes used by dashboard pages */
-.card-surface {
-  /* background: #fff; */
-  border-radius: 12px;
-  /* padding: 20px; */
-  /* box-shadow: 0 6px 18px rgba(16,24,40,0.04); */
-}
-.pill-tab {
-  border-radius: 9999px;
-  padding: 12px 18px;
-  font-size: 16px;
-  cursor: pointer;
-}
+input:focus, select:focus, textarea:focus {outline: none !important;box-shadow: none !important;}
+.text-gray-400{color: var(--gray);} /* legacy */
+.text-color-white{color:var(--color-white) !important;}
+.text-black{color:var(--color-black) !important;}
+.text-desc{color: var(--color-text-desc);}
+.text-gray-500,.text-gray-600{color: var(--color-text-desc);}
+.placeholder-desc::placeholder{color: var(--color-text-desc);}
+.text-primary{color: var(--color-accent-primary);} 
+.text-accent{color: var(--color-accent-primary);} 
+.text-accent-secondary{color: var(--color-accent-secondary);} 
+.text-black{color: var(--black);} 
+.text-black-heading{color: var(--color-text-body);} 
+.bg-accent{background: var(--color-accent-primary);} 
+.bg-accent-secondary{background: var(--color-accent-secondary);} 
+.bg-primary-surface{background: #FFFFFF;} 
+.box-shadow-sm{box-shadow: var(--shadow-sm);}
+.bg-dark-body{background:var(--color-text-body);}
+.border-token{border-color: var(--color-border) !important;}
+.card-surface {border-radius: 12px;}
+.pill-tab {border-radius: 9999px;padding: 12px 18px;font-size: 16px;cursor: pointer;}
 @media (max-width:640px){
   .pill-tab { padding: 8px 12px; font-size: 14px; }
 }
-.search-pill {
-  border-radius: 9999px;
-  padding: 8px 20px;
-  color:#525252;
-  background: #fff;
-  border: 1px solid #E5E5E5;
-}
+.search-pill {border-radius: 9999px;padding: 8px 20px;color:#525252;background: #fff;border: 1px solid #E5E5E5;}
 .search-pill svg {font-size: 22px;}
 .search-pill input{height:30px;}
 .search-pill input:focus{border: none;outline: none;}
@@ -109,28 +124,19 @@ input:focus, select:focus, textarea:focus {
 .booking-table tr, .table-column-wrap tr { border-bottom: 1px solid #F0F2F1; }
 .price-card {background: #fff;border-radius: 12px;padding: 20px;box-shadow: 0 6px 18px rgba(16,24,40,0.04);}
 .status-badge { background:#FFF6E6; color:#C36B00; padding:6px 10px; border-radius:8px; font-size:13px; }
-.btn-primary-pill { background: var(--primary); color: #fff; padding:12px 20px; border-radius:100px; cursor: pointer; display:inline-block; font-weight:600; }
-
-/* Auth / form polish used by auth pages (login / forgot-password / reset-password) */
+.btn-primary-pill { background: var(--color-accent-primary); color: #fff; padding:12px 20px; border-radius:100px; cursor: pointer; display:inline-block; font-weight:600; }
 .auth-header { padding:18px 24px; background: #fff; border-bottom:1px solid rgba(0,0,0,0.04); }
 .auth-header .brand { font-weight:700; font-size:20px; }
 .auth-header .right-cta { padding:8px 14px; border-radius:9999px; border:1px solid rgba(0,0,0,0.06); font-size:13px; }
-
 .auth-center { display:flex; align-items:center; justify-content:center; padding:48px 16px; }
 .auth-wrapper { width:100%; max-width:720px; }
-
 .auth-title { font-size:34px; font-weight:800; margin:0 0 8px 0; text-align:center; }
 .auth-sub { font-size:14px; color:#6b7280; margin:0 0 22px 0; text-align:center; }
-
 .input-pill-wrap { position:relative; }
 .input-pill { width:100%; padding:14px 18px; padding-left:52px; border-radius:9999px; border:1px solid #EFF2F1; background:#fff; box-shadow:0 8px 18px rgba(16,24,40,0.03); font-size:14px; }
 .input-icon { position:absolute; left:16px; top:50%; transform:translateY(-50%); width:20px; height:20px; opacity:0.9; }
-
-.btn-full { width:100%; display:inline-block; padding:12px 18px; border-radius:9999px; background:var(--primary); color:#fff; border:none; font-weight:600; box-shadow:0 6px 18px rgba(74,93,82,0.12); }
-.slick-slide > div {
-  height: 100%;
-}
-
+.btn-full { width:100%; display:inline-block; padding:12px 18px; border-radius:9999px; background:var(--color-accent-primary); color:#fff; border:none; font-weight:600; box-shadow:0 6px 18px rgba(74,93,82,0.12); }
+.slick-slide > div {height: 100%;}
 /* Responsive helpers for right-side content */
 .img-fluid { width: 100%; height: auto; display: block; }
 .table-responsive { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
@@ -139,22 +145,11 @@ input:focus, select:focus, textarea:focus {
 @media (max-width:640px){
   .auth-title { font-size:26px; }
   .auth-center { padding:28px 12px; }
-  /* reduce main paddings on small devices */
   main { padding-left: 12px !important; padding-right: 12px !important; }
 }
-
 .card-surface > .text-center.text-sm,
 .card-surface > .footer-bottom-line,
-.card-surface .back-to-login {
-  position: fixed;
-  left: 50%;
-  transform: translateX(-50%);
-  bottom: 48px; 
-  z-index: 40;
-  width: -webkit-fill-available;
-  background: transparent;
-}
-
+.card-surface .back-to-login {position: fixed;left: 50%;transform: translateX(-50%);bottom: 48px; z-index: 40;width: -webkit-fill-available;background: transparent;}
 @media (max-width:640px) {
   .card-surface > .text-center.text-sm,
   .card-surface > .footer-bottom-line,

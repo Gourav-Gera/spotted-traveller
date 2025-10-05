@@ -95,7 +95,7 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
         </div>
         {/* Reviews Slider */}
         <div className="space-y-6">
-          <h2 className="font-semibold text-xl text-primary">Rating & Reviews</h2>
+          <h2 className="font-semibold text-xl text-primary text-black">Rating & Reviews</h2>
           <div className="overflow-hidden relative">
             <div
               className="flex transition-transform duration-500 ease-out"

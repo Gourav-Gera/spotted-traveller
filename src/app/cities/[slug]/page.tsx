@@ -1,7 +1,7 @@
 import React from 'react';
 import { notFound } from 'next/navigation';
 import MainHeader from '../../../components/MainHeader';
-import MainFooter from '../../../components/MainFooter';
+import Footer from '../../../components/Footer';
 import Image from 'next/image';
 import Link from 'next/link';
 import CityMediaGallery from '../../../components/CityMediaGallery';
@@ -28,15 +28,15 @@ export default function CityPage({ params }: CityPageProps){
       <MainHeader />
       <main className="flex-1">
         {/* Top: gallery + details (as per Figma) */}
-  <section className="max-w-7xl mx-auto pt-12 pb-10 px-6">
+  <section className="app-container pt-12 pb-10 px-6">
           <div className="grid md:grid-cols-2 gap-8 items-start">
             <CityMediaGallery images={[city.hero, ...city.gallery]} alt={city.name} />
             <div>
-              <h1 className="text-[34px] md:text-[42px] font-semibold tracking-tight mb-5 leading-tight text-[#101418]">{city.name}</h1>
+              <h1 className="text-[34px] md:text-[42px] font-semibold tracking-tight mb-5 leading-tight text-[var(--color-text-body)]">{city.name}</h1>
               <p className="text-[15px] md:text-[16px] text-[#5B6369] leading-relaxed mb-7 max-w-2xl">{city.description}</p>
               <div className="flex flex-wrap gap-3 mb-10">
                 {city.tags.map((t, idx) => (
-                  <span key={t} className="inline-flex items-center gap-2 text-[12px] tracking-wide px-5 py-2.5 rounded-full bg-[#8B3F09] text-white shadow-sm">
+                    <span key={t} className="inline-flex items-center gap-2 text-[12px] tracking-wide px-5 py-2.5 rounded-full bg-[var(--color-accent-secondary)] text-white shadow-sm">
                     {idx === 0 && <span className="w-3 h-3 bg-white/80 rounded-sm" />} {t}
                   </span>
                 ))}
@@ -76,12 +76,12 @@ export default function CityPage({ params }: CityPageProps){
 
         {/* Municipality CTA Banner */}
         <section id="municipality" className="max-w-6xl mx-auto px-6 md:px-10 py-10">
-          <div className="bg-[#8B3F09] text-white rounded-2xl px-8 md:px-10 py-8 md:py-9 flex items-center justify-between shadow">
+          <div className="bg-[var(--color-accent-secondary)] text-white rounded-2xl px-8 md:px-10 py-8 md:py-9 flex items-center justify-between shadow">
             <div className="pr-4">
               <h2 className="text-[22px] md:text-[24px] font-semibold">Meet the Municipality</h2>
               <p className="text-[13px] md:text-[14px] opacity-95 mt-2 max-w-2xl">{city.municipality.body[0] || 'Learn about local support, services, and programs.'}</p>
             </div>
-            <Link href="#" className="inline-flex items-center gap-2 bg-white text-[#8B3F09] rounded-full px-6 py-3 text-[13px] font-medium hover:bg-white/90">Explore <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M9 18l6-6-6-6" strokeLinecap="round" strokeLinejoin="round"/></svg></Link>
+            <Link href="#" className="inline-flex items-center gap-2 bg-white text-[var(--color-accent-secondary)] rounded-full px-6 py-3 text-[13px] font-medium hover:bg-white/90">Explore <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M9 18l6-6-6-6" strokeLinecap="round" strokeLinejoin="round"/></svg></Link>
           </div>
         </section>
 
@@ -134,7 +134,7 @@ export default function CityPage({ params }: CityPageProps){
                   <p className="text-[13px] text-gray-600 mt-1">Experience live jazz under the Tuscan stars, with family & friends</p>
                   <div className="mt-auto pt-4 flex items-center justify-between">
                     <span className="inline-flex items-center gap-1 text-[12px] px-2.5 py-1 rounded-full bg-gray-100 text-gray-600"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 10c0 7-9 12-9 12S3 17 3 10a9 9 0 1 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg>{city.name}, {city.country}</span>
-                    <Link href="/events" className="text-[12px] rounded-full border border-[#8B3F09] text-[#8B3F09] px-5 py-1.5 hover:bg-orange-50">Know More</Link>
+                    <Link href="/events" className="text-[12px] rounded-full border border-[var(--color-accent-secondary)] text-[var(--color-accent-secondary)] px-5 py-1.5 hover:bg-orange-50">Know More</Link>
                   </div>
                 </div>
               </div>
@@ -142,7 +142,7 @@ export default function CityPage({ params }: CityPageProps){
           </div>
         </section>
       </main>
-      <MainFooter />
+  <Footer />
     </div>
   );
 }

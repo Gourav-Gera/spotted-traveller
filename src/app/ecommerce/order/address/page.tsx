@@ -1,6 +1,6 @@
 "use client";
 import MainHeader from '../../../../components/MainHeader';
-import MainFooter from '../../../../components/MainFooter';
+import Footer from '../../../../components/Footer';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
@@ -30,7 +30,7 @@ export default function AddressModalPage(){
           </form>
         </div>
       )}
-      <MainFooter />
+  <Footer />
     </div>
   );
 }

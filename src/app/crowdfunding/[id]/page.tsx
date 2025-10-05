@@ -1,6 +1,6 @@
 import React from 'react';
 import MainHeader from '../../../components/MainHeader';
-import MainFooter from '../../../components/MainFooter';
+import Footer from '../../../components/Footer';
 import Image from 'next/image';
 import { getCampaignById } from '../../../data/crowdfunding';
 
@@ -15,7 +15,7 @@ export default function PublicCampaignDetail({ params }: PageProps){
         <main className="flex-1 flex items-center justify-center p-10">
           <p className="text-sm text-gray-600">Campaign not found.</p>
         </main>
-        <MainFooter />
+        <Footer />
       </div>
     );
   }
@@ -28,7 +28,7 @@ export default function PublicCampaignDetail({ params }: PageProps){
     <div className="min-h-screen flex flex-col bg-white">
       <MainHeader />
       <main className="flex-1 w-full">
-        <article className="max-w-[1400px] mx-auto pt-14 pb-16 px-10">
+  <article className="app-container pt-14 pb-16 px-10">
           <header className="flex items-start justify-between mb-10">
             <h1 className="text-[38px] font-semibold tracking-tight leading-tight text-[#222] max-w-3xl">{campaign.title}</h1>
             <div className="hidden md:block text-[11px] text-[#333] leading-tight pr-4 pt-2">
@@ -106,7 +106,7 @@ export default function PublicCampaignDetail({ params }: PageProps){
           </div>
         </article>
       </main>
-      <MainFooter />
+  <Footer />
     </div>
   );
 }

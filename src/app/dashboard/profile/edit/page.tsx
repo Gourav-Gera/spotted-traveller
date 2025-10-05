@@ -33,9 +33,9 @@ export default function EditProfilePage(){
 
   return (
     <div className="">
-      <h1 className="text-xl text-primary leading-tight font-semibold mb-10">Edit Profile</h1>
-      <form onSubmit={onSubmit} className="max-w-xl space-y-7">
-        <div className="flex items-center gap-6">
+      {/* Heading removed to avoid duplication; outer page owns the main title */}
+      <form onSubmit={onSubmit} className="max-w-xl mx-auto space-y-7">
+        <div className="flex flex-col items-center gap-3">
           <div className="relative">
             <div className="w-28 h-28 rounded-full bg-gray-100 overflow-hidden flex items-center justify-center ring-2 ring-offset-2 ring-[var(--primary)]/10">
               {avatar ? (
@@ -44,10 +44,10 @@ export default function EditProfilePage(){
                 <span className="text-xs text-gray-400">No Image</span>
               )}
             </div>
-            <button type="button" onClick={onPick} className="absolute -bottom-2 -right-2 bg-[var(--primary)] text-white text-[10px] px-2 py-1 rounded-full shadow">Upload</button>
+            <button type="button" onClick={onPick} className="absolute -bottom-2 left-1/2 -translate-x-1/2 bg-[var(--primary)] text-white text-[10px] px-3 py-1 rounded-full shadow">Upload</button>
             <input ref={inputRef} type="file" accept="image/*" className="hidden" onChange={onFile} />
           </div>
-          <div className="text-xs text-gray-500 leading-relaxed max-w-xs">Upload a square image (recommended 256x256). JPG or PNG, max 2MB.</div>
+          <div className="text-xs text-gray-500 leading-relaxed max-w-xs text-center">Upload a square image (recommended 256x256). JPG or PNG, max 2MB.</div>
         </div>
         {fileError && <div className="text-xs text-red-500">{fileError}</div>}
         <div>

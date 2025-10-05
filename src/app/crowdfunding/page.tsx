@@ -1,6 +1,6 @@
 import React from 'react';
 import MainHeader from '../../components/MainHeader';
-import MainFooter from '../../components/MainFooter';
+import Footer from '../../components/Footer';
 import Link from 'next/link';
 import Image from 'next/image';
 import { crowdfundingCampaigns } from '../../data/crowdfunding';
@@ -59,7 +59,7 @@ export default function PublicCrowdfundingListing(){
           </div>
         </section>
       </main>
-      <MainFooter />
+  <Footer />
     </div>
   );
 }

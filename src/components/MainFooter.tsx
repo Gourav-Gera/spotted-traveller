@@ -4,11 +4,11 @@ import React from 'react';
 export default function MainFooter(){
   return (
     <footer className="bg-[#2F3235] text-[#E3E4E6] text-[11px] md:text-[12px] mt-20">
-  <div className="max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-10 pt-14 sm:pt-16 pb-10">
+  <div className="app-container pt-14 sm:pt-10 pb-10">
         <div className="grid md:grid-cols-3 gap-12 mb-14">
           <div>
-            <div className="font-bold text-white text-[20px] mb-4 tracking-tight">Spotted.</div>
-            <p className="leading-relaxed max-w-xs text-[12px]">With lots of unique blocks, you can easily build a page without coding. Build your next landing page.</p>
+            <div className="font-semibold text-white text-[20px] mb-4 tracking-tight">Spotted.</div>
+            <p className="leading-relaxed max-w-xs text-[13px]">With lots of unique blocks, you can easily build a page without coding. Build your next landing page.</p>
           </div>
           <div className="flex flex-col md:items-start gap-12 md:col-span-2 md:flex-row md:justify-end">
             <div>
