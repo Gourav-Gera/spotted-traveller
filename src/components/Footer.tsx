@@ -1,4 +1,5 @@
 import React from "react";
+import Link from 'next/link';
 
 interface FooterProps { compact?: boolean }
 
@@ -21,8 +22,8 @@ const Footer: React.FC<FooterProps> = ({ compact = false }) => {
               <div>
                 <h4 className="text-[14px] font-normal tracking-wider text-white mb-5">COMPANY</h4>
                 <ul className="space-y-3 text-[17px]">
-                  <li><a className="hover:text-white transition-colors text-sm" href="#">About us</a></li>
-                  <li><a className="hover:text-white transition-colors text-sm" href="#">Contact us</a></li>
+                  <li><Link className="hover:text-white transition-colors text-sm" href="/about">About us</Link></li>
+                  <li><Link className="hover:text-white transition-colors text-sm" href="/contact">Contact us</Link></li>
                 </ul>
               </div>
               <div>

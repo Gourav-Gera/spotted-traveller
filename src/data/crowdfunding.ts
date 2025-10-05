@@ -20,7 +20,7 @@ export interface CrowdfundingCampaign {
 export const crowdfundingCampaigns: CrowdfundingCampaign[] = [
   {
     id: '1',
-    title: 'Restore Historic City Library',
+    title: 'Restore City Library',
     slug: 'restore-historic-city-library',
     shortDescription: 'Help us preserve knowledge by restoring the old municipal library reading halls & archive wing.',
     description: 'Our historic city library has served generations and holds thousands of rare volumes that need controlled environments. The roof leakage and outdated climate system threaten these invaluable records. Funds will be used for structural reinforcement, energy‑efficient HVAC installation, reading lounge refurbishment and accessible ramps. Transparency reports will be shared weekly including invoices & progress photos.',

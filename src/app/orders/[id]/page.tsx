@@ -29,8 +29,8 @@ export default function OrderDetailPage(){
   return (
     <div className="min-h-screen flex flex-col bg-white">
       <MainHeader />
-  <main className="flex-1 app-container w-full px-5 sm:px-8 lg:px-10 pt-12 sm:pt-14 pb-24 sm:pb-28 text-[13px]">
-        <h1 className="text-[24px] font-semibold mb-8">Order Details</h1>
+  <main className="flex-1 app-container w-full px-5 sm:px-8 lg:px-10 pt-10 sm:pt-12 pb-24 sm:pb-28 text-[13px]">
+    <h1 className="text-[26px] sm:text-[32px] font-semibold mb-8 text-black">Order Details</h1>
   <div className="grid md:grid-cols-[1fr_340px] gap-10 lg:gap-14 items-start">
           <div>
             <div className="flex items-start gap-4 mb-8">
@@ -40,13 +40,13 @@ export default function OrderDetailPage(){
                   <p className="text-[14px] font-semibold flex items-center gap-2">{order.product}<span className="text-[10px] font-normal text-gray-400"># {order.id}</span></p>
                   <StatusBadge status={order.status} />
                 </div>
-                <p className="text-[11px] text-gray-500">${order.price}</p>
+                <p className="text-[11px] text-desc">${order.price}</p>
               </div>
             </div>
             <div className="space-y-8">
               <div className="border-b pb-4">
                 <p className="font-semibold mb-1 text-[12px]">Delivery Address</p>
-                <p className="text-[11px] text-gray-600 leading-relaxed">{order.address}</p>
+                <p className="text-[11px] text-desc leading-relaxed">{order.address}</p>
               </div>
               <div className="border-b pb-6">
                 <p className="font-semibold mb-5 text-[12px]">Order Updates</p>
@@ -57,7 +57,7 @@ export default function OrderDetailPage(){
                       <div className="h-px flex-1 mx-2" style={{background:'var(--color-accent-secondary)'}}></div>
                       <div className="w-4 h-4 rounded-full flex items-center justify-center text-[10px] text-white" style={{background:'var(--color-accent-secondary)'}}>✕</div>
                     </div>
-                    <div className="flex justify-between text-[11px] text-gray-600">
+                    <div className="flex justify-between text-[11px] text-desc">
                       <span className="font-medium text-gray-800">Order Confirmed</span>
                       <span className="font-medium" style={{color:'var(--color-accent-secondary)'}}>Cancelled</span>
                     </div>
@@ -77,7 +77,7 @@ export default function OrderDetailPage(){
                         );
                       })}
                     </div>
-                    <div className="flex items-center justify-between text-[11px] text-gray-600 px-0.5">
+                    <div className="flex items-center justify-between text-[11px] text-desc px-0.5">
                       {activeSteps.map((s,i)=> <span key={s} className={`${i===activeIndex?'text-gray-800 font-medium':''}`}>{s}</span>)}
                     </div>
                   </>
@@ -95,14 +95,14 @@ export default function OrderDetailPage(){
               </div>
             </div>
           </div>
-          <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-5 sm:p-6 text-[12px] space-y-3 w-full md:w-[340px] mt-10 md:mt-0">
-            <h3 className="font-semibold mb-2">Price details</h3>
-            <div className="flex justify-between"><span>Price</span><span>${order.price}</span></div>
-            <div className="flex justify-between"><span>Services fee</span><span>$10</span></div>
-            <div className="flex justify-between"><span>Delivery fee</span><span>$10</span></div>
-            <div className="flex justify-between"><span>Taxes</span><span>$10</span></div>
-            <hr />
-            <div className="flex justify-between font-semibold"><span>Grand Total</span><span>${order.price+30}</span></div>
+          <div className="bg-white rounded-2xl border border-[#E5E5E5] shadow-sm p-6 text-[12px] space-y-3 w-full md:w-[360px] mt-10 md:mt-0">
+            <h3 className="font-semibold mb-3 text-black">Price details</h3>
+            <div className="flex justify-between text-desc"><span>Price</span><span className="text-black">${order.price}</span></div>
+            <div className="flex justify-between text-desc"><span>Services fee</span><span className="text-black">$10</span></div>
+            <div className="flex justify-between text-desc"><span>Delivery fee</span><span className="text-black">$10</span></div>
+            <div className="flex justify-between text-desc"><span>Taxes</span><span className="text-black">$10</span></div>
+            <hr className="border-gray-200" />
+            <div className="flex justify-between font-semibold"><span className="text-black">Grand Total</span><span className="text-[color:var(--color-accent-primary)]">${order.price+30}</span></div>
           </div>
         </div>
       </main>

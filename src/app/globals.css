@@ -14,6 +14,14 @@
   font-style: normal;
   font-display: swap;
 }
+/* Alias lighter weights to Regular to avoid synthetic rendering */
+@font-face {
+  font-family: 'Gilroy';
+  src: url('/font/Gilroy-Regular.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
 @font-face {
   font-family: 'Gilroy';
   src: url('/font/Gilroy-Medium.woff') format('woff');
@@ -25,6 +33,14 @@
   font-family: 'Gilroy';
   src: url('/font/Gilroy-SemiBold.woff') format('woff');
   font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+/* Map Bold (700) to the closest available weight to prevent faux bold */
+@font-face {
+  font-family: 'Gilroy';
+  src: url('/font/Gilroy-SemiBold.woff') format('woff');
+  font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
@@ -84,6 +100,8 @@ body {
   color: var(--color-text-body);
   font-family: var(--font-gilroy);
 }
+/* Ensure font applies at the root and improve font smoothing for consistency */
+html { font-family: var(--font-gilroy); -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
 /* Global layout container utility (centered, responsive gutters) */
 .app-container{max-width:1400px;margin-left:auto;margin-right:auto;width:100%;padding-left:1rem;padding-right:1rem;}
 @media (min-width:640px){.app-container{padding-left:1.5rem;padding-right:1.5rem;}}
