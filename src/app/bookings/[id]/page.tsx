@@ -24,16 +24,16 @@ export default function PublicBookingDetail(){
   return (
     <div className="min-h-screen flex flex-col bg-white">
       <MainHeader />
-  <main className="flex-1 app-container w-full px-5 sm:px-8 lg:px-10 pt-12 sm:pt-14 pb-24 sm:pb-28 text-[13px]">
+      <main className="flex-1 app-container w-full px-5 sm:px-8 lg:px-10 pt-12 sm:pt-14 pb-24 sm:pb-28 text-[13px]">
         <h1 className="text-[24px] font-semibold mb-10">Booking Details</h1>
-  <div className="grid md:grid-cols-[1fr_340px] gap-10 lg:gap-14 items-start">
+        <div className="grid md:grid-cols-[1fr_340px] gap-10 lg:gap-14 items-start">
           {/* Left Column */}
           <div>
             {/* Hotel Header */}
-            <div className="flex items-start gap-4 mb-8">
+            <div className="flex items-center gap-4 mb-8">
               <Image src="/images/hotel-img-table.png" alt={booking.hotel} width={72} height={72} className="w-[72px] h-[72px] rounded-md object-cover" />
-              <div className="flex-1 min-w-0">
-                <div className="flex items-center gap-4 mb-1">
+              <div className="flex-1 items-center min-w-0">
+                <div className="flex items-center justify-between gap-4 mb-1">
                   <p className="text-[14px] font-semibold">{booking.hotel}</p>
                   <StatusBadge status={booking.status} />
                 </div>
