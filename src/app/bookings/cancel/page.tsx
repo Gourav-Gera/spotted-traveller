@@ -14,7 +14,7 @@ export default function CancelPublicBooking(){
     <div className="min-h-screen flex flex-col bg-white">
       <MainHeader />
   <main className="flex-1 max-w-[900px] mx-auto w-full px-5 sm:px-8 lg:px-10 pt-12 sm:pt-14 pb-24 sm:pb-28 text-[13px]">
-        <h1 className="text-[24px] font-semibold mb-10">Cancel Booking</h1>
+    <h1 className="sm:text-[26px] text-[24px] font-semibold mb-10 text-black">Cancel Booking</h1>
         <form onSubmit={submit} className="max-w-xl space-y-6">
           <select value={reason} onChange={e=>setReason(e.target.value)} className="w-full h-11 rounded-full border border-gray-300 px-5 text-[12px] outline-none">
             <option value="">Select reason</option>
