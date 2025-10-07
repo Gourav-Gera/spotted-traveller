@@ -5,6 +5,7 @@ import { useParams } from 'next/navigation';
 import { publicOrders } from '../../../data/publicOrders';
 import Image from 'next/image';
 import Link from 'next/link';
+import { FiCheck, FiX, FiRefreshCw } from 'react-icons/fi';
 
 // Base steps for active (non-cancelled) orders
 const activeSteps = ['Order Confirmed','On the Way','Completed'];
@@ -17,7 +18,7 @@ function StatusBadge({status}:{status:string}){
     cancelled:'#B3541E'
   };
   const labelMap:Record<string,string>={confirmed:'Confirmed',on_the_way:'On the Way',delivered:'Delivered',cancelled:'Cancelled'};
-  return <span className="text-[11px] px-3 py-1 rounded-full text-white" style={{background:map[status]||'var(--color-accent-primary)'}}>{labelMap[status]||status}</span>;
+  return <span className="text-[11px] px-3 py-1 rounded-md text-white" style={{background:map[status]||'var(--color-accent-primary)'}}>{labelMap[status]||status}</span>;
 }
 
 export default function OrderDetailPage(){
@@ -29,35 +30,39 @@ export default function OrderDetailPage(){
   return (
     <div className="min-h-screen flex flex-col bg-white">
       <MainHeader />
-        <main className="flex-1 app-container w-full px-5 sm:px-8 lg:px-10 pt-10 sm:pt-12 pb-24 sm:pb-28 text-[13px]">
-        <h1 className="text-[28px] sm:text-[30px] font-semibold mb-8 text-black">Order Details</h1>
+        <main className="flex-1 app-container w-full px-5 sm:px-8 lg:px-10 pt-10 sm:pt-8 pb-24 sm:pb-28 text-[13px]">
+        <h1 className="sm:text-[26px] font-semibold mb-8 text-black">Order Details</h1>
         <div className="grid md:grid-cols-[1fr_340px] gap-10 lg:gap-14 items-start">
           <div>
             <div className="flex items-center gap-4 mb-8">
               <Image src="/images/hotel-img-table.png" alt={order.product} width={60} height={60} className="w-[60px] h-[60px] rounded-md object-cover" />
               <div className="flex-1 items-center min-w-0">
                 <div className="flex items-center justify-between gap-4 mb-1">
-                  <p className="text-[15px] font-semibold flex items-center gap-2">{order.product}
+                  <p className="text-[15px] font-semibold flex items-center gap-2 text-black">{order.product}
                     {/* <span className="text-[11px] font-normal text-gray-400"># {order.id}</span> */}
                   </p>
                   <StatusBadge status={order.status} />
                 </div>
-                <p className="text-[12px] text-desc">${order.price}</p>
+                <p className="text-[12px] text-primary font-semibold">${order.price}</p>
               </div>
             </div>
             <div className="space-y-8">
-              <div className="border-b pb-4">
+              <div className="border-b pb-4 border-[#E5E5E5] mb-4">
                 <p className="font-semibold mb-1 text-[16px] text-black">Delivery Address</p>
                 <p className="text-[14px] text-desc leading-relaxed">{order.address}</p>
               </div>
-              <div className="border-b pb-6">
+              <div className="pb-0">
                 <p className="font-semibold mb-5 text-[16px] text-black">Order Updates</p>
                 {isCancelled ? (
                   <div className="w-full">
                     <div className="flex items-center justify-between w-full mb-4">
-                      <div className="w-4 h-4 rounded-full flex items-center justify-center text-[10px] text-white" style={{background:'#68D585'}}>✓</div>
+                      <div className="w-4 h-4 rounded-full flex items-center justify-center text-white" style={{background:'#68D585'}}>
+                        <FiCheck className="w-3 h-3" />
+                      </div>
                       <div className="h-px flex-1 mx-2" style={{background:'#68D585'}}></div>
-                      <div className="w-4 h-4 rounded-full flex items-center justify-center text-[10px] text-white" style={{background:'var(--color-accent-secondary)'}}>✕</div>
+                      <div className="w-4 h-4 rounded-full flex items-center justify-center text-white" style={{background:'var(--color-accent-secondary)'}}>
+                        <FiX className="w-3 h-3" />
+                      </div>
                     </div>
                     <div className="flex justify-between text-[11px] text-desc">
                       <span className="font-medium text-black">Order Confirmed</span>
@@ -66,15 +71,20 @@ export default function OrderDetailPage(){
                   </div>
                 ) : (
                   <>
-                    <div className="flex items-center justify-between mb-5 px-1">
+                    <div className="flex items-center justify-between mb-5">
                       {activeSteps.map((s,i)=>{
                         const done = i<=activeIndex;
+                        const last = i===activeSteps.length-1;
                         return (
                           <div key={s} className="flex-1 flex items-center">
-                            <div className={`w-4 h-4 md:w-4 md:h-4 rounded-full flex items-center justify-center text-[10px] ${done? 'text-white':'text-gray-400'}`} style={{background:done? '#68D585':'#D1D5DB'}}>
-                              ✓
+                            {/* Left line (omit for first) */}
+                            {i>0 && (<div className="h-px flex-1 mx-2" style={{background:'#E5E5E5'}} />)}
+                            {/* Node */}
+                            <div className={`w-4 h-4 md:w-4 md:h-4 rounded-full flex items-center justify-center ${done? 'text-white':'text-gray-400'}`} style={{background:done? '#68D585':'#D1D5DB'}}>
+                              <FiCheck className="w-3 h-3" />
                             </div>
-                            <div className={`h-px flex-1 mx-2`} style={{background: i<activeIndex? '#68D585':'#D1D5DB'}}></div>
+                            {/* Right line (omit for last) */}
+                            {!last && (<div className="h-px flex-1 mx-2" style={{background:'#E5E5E5'}} />)}
                           </div>
                         );
                       })}
@@ -84,20 +94,26 @@ export default function OrderDetailPage(){
                       <span className={`${activeIndex===1?'text-black font-medium':''} text-center`}>{activeSteps[1]}</span>
                       <span className={`${activeIndex===2?'text-black font-medium':''} text-right`}>{activeSteps[2]}</span>
                     </div>
-                    <div className="pt-6">
-                      <Link href="/contact" className="inline-flex items-center justify-center h-11 px-8 rounded-full border border-gray-400 text-[12px] text-[color:var(--color-text-body)] bg-white w-full sm:w-auto hover:bg-gray-50">Contact Us</Link>
-                    </div>
+                    {/* Contact Us removed as per design */}
                   </>
                 )}
               </div>
-              <div>
+              <div className="flex flex-col gap-4">
                 {order.status==='confirmed' && (
-                  <Link href={`/orders/cancel?id=${order.id}`} className="inline-flex items-center justify-center h-11 px-10 rounded-full border text-[12px] min-w-[210px] transition" style={{borderColor:'var(--color-accent-primary)', color:'var(--color-accent-primary)'}}>
-                    <span className="group-hover:text-white">Cancel Order</span>
+                  <Link href={`/orders/cancel?id=${order.id}`} className="inline-flex items-center justify-center h-11 px-10 rounded-full text-[14px] min-w-[210px] transition bg-[color:var(--color-accent-primary)] text-white hover:opacity-95"> 
+                    Cancel Order
                   </Link>
                 )}
-                {(order.status==='delivered' || order.status==='cancelled' || order.status==='on_the_way') && (
-                  <Link href="/orders" className="inline-flex items-center justify-center h-11 px-10 rounded-full border border-gray-400 text-[12px] min-w-[210px] hover:bg-gray-50">Order Again</Link>
+                {order.status==='on_the_way' && (
+                  <Link href="/contact" className="inline-flex items-center justify-center h-11 px-10 rounded-full border text-[14px] min-w-[210px] hover:bg-gray-50" style={{borderColor:'var(--color-accent-primary)', color:'var(--color-accent-primary)'}}>
+                    Contact Us
+                  </Link>
+                )}
+                {(order.status==='delivered' || order.status==='cancelled') && (
+                  <Link href="/orders" className="inline-flex items-center justify-center gap-2 h-11 px-10 rounded-full border text-[14px] min-w-[210px] hover:bg-gray-50" style={{borderColor:'var(--color-accent-primary)', color:'var(--color-accent-primary)'}}>
+                    <FiRefreshCw className="w-4 h-4" />
+                    Order Again
+                  </Link>
                 )}
               </div>
             </div>

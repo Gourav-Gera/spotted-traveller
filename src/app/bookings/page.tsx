@@ -22,7 +22,7 @@ export default function PublicBookingsPage(){
     <div className="min-h-screen flex flex-col bg-white">
       <MainHeader />
   <main className="flex-1 app-container w-full px-5 sm:px-8 lg:px-10 pt-12 sm:pt-14 pb-24 sm:pb-28 text-[13px]">
-        <h1 className="text-[24px] font-semibold mb-6">Your Bookings</h1>
+    <h1 className="sm:text-[26px] text-[24px] font-semibold mb-6 text-black">Your Bookings</h1>
         <div className="w-full rounded-full border border-[#E5E5E5] flex mb-8 overflow-hidden text-[12px]">
           {tabs.map(t=> (
             <button key={t.key} onClick={()=>setTab(t.key)} className={`flex-1 h-11 rounded-full transition text-center ${t.key===tab? 'bg-[var(--color-accent-primary)] text-white font-medium':'text-gray-600'}`}>{t.label}</button>
@@ -33,14 +33,14 @@ export default function PublicBookingsPage(){
             <div key={b.id} className="flex items-start gap-6 py-7 border-b last:border-b-0">
               <Image src="/images/hotel-img-table.png" alt={b.hotel} width={72} height={72} className="w-18 h-18 rounded-md object-cover" />
               <div className="flex-1 min-w-0 pt-0.5">
-                <h3 className="text-[14px] font-semibold mb-2">{b.hotel}</h3>
-                <div className="space-y-1 text-[11px] text-gray-600">
+                <h3 className="text-[14px] font-semibold mb-2 text-black">{b.hotel}</h3>
+                <div className="space-y-1 text-[12px] text-desc">
                   <p className="flex items-center gap-2"><FiCalendar className="text-gray-500 text-[13px]"/> Date:- {formatDate(b.startDate)}</p>
-                  <p className="flex items-center gap-2"><FiMapPin className="text-gray-500 text-[13px]"/> Location:- <span className="font-medium">{b.city}, {b.country}</span></p>
+                  <p className="flex items-center gap-2"><FiMapPin className="text-gray-500 text-[13px]"/> Location:- <span className="font-medium text-black">{b.city}, {b.country}</span></p>
                 </div>
               </div>
               <div className="flex flex-col items-end gap-4 shrink-0">
-                <p className="text-[13px] font-semibold">${b.pricePerNight}</p>
+                <p className="text-[13px] font-semibold text-primary">${b.pricePerNight}</p>
                 <Link href={`/bookings/${b.id}`} className="inline-flex items-center justify-center h-9 px-6 rounded-full border border-gray-400 text-[11px] hover:bg-gray-50">View Details →</Link>
               </div>
             </div>

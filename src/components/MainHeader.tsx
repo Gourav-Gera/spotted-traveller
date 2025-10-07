@@ -34,7 +34,7 @@ export default function MainHeader(){
           >
             <FiMenu className="text-[20px]" />
           </button>
-          <Link href="/" className="font-bold text-[22px] tracking-tight pr-2 sm:pr-6">Spotted.</Link>
+          <Link href="/" className="font-bold text-[22px] text-black tracking-tight pr-2 sm:pr-6">Spotted.</Link>
         </div>
         {/* Center Nav */}
       <nav className="hidden md:flex justify-center md:gap-6 lg:gap-10 md:text-[13px] lg:text-[14px] font-medium text-[#4A4A4A]">
@@ -54,10 +54,10 @@ export default function MainHeader(){
         {/* Right Actions */}
         <div className="flex items-center gap-1 md:gap-1.5 lg:gap-2 justify-end pl-2 sm:pl-4 lg:pl-8 relative" ref={menuRef}>
           <Link href="/notifications" aria-label="Notifications" className="hidden sm:inline-flex w-10 h-10 items-center justify-center rounded-full text-gray-600 hover:bg-gray-100">
-            <FiBell className="text-[18px]" />
+            <FiBell className="text-[18px] text-primary" />
           </Link>
           <Link href="/ecommerce/cart" aria-label="Cart" className="hidden sm:inline-flex w-10 h-10 items-center justify-center rounded-full text-gray-600 hover:bg-gray-100">
-            <FiShoppingCart className="text-[18px]" />
+            <FiShoppingCart className="text-[18px] text-primary" />
           </Link>
           <button aria-label="Search" className="hidden sm:inline-flex w-10 h-10 items-center justify-center rounded-full text-gray-600 hover:bg-gray-100">
             <FiSearch className="text-[18px] text-primary" />
@@ -73,7 +73,7 @@ export default function MainHeader(){
           {/* Full pill on desktop (lg and up) */}
           <button onClick={()=>setOpen(o=>!o)} className="hidden lg:flex items-center gap-2 cursor-pointer pl-1 pr-5 h-11 rounded-full border-2 hover:bg-gray-100 transition" style={{borderColor:'var(--color-accent-primary)'}}>
             <div className="w-9 h-9 rounded-full overflow-hidden bg-gray-200 flex items-center justify-center text-[11px] font-semibold text-gray-600">JD</div>
-            <span className="text-[13px] font-medium text-gray-700">John Doe</span>
+            <span className="text-[13px] font-medium text-black">John Doe</span>
           </button>
           {open && (
             <div className="absolute top-[72px] right-0 w-56 bg-white rounded-xl shadow-lg border border-gray-200 py-3 z-50 animate-fadeIn">
